@@ -20,6 +20,14 @@
         AND ${searchType} LIKE CONCAT('%', #{search}, '%');
     </select>
 
+    <select id="getMyTotal" parameterType="BoardDetail" resultType="int">
+        SELECT count(*)
+        FROM board_detail
+        WHERE board_type = #{boardType}
+        AND ${searchType} LIKE CONCAT('%', #{search}, '%')
+        AND member_code = #{memberCode};
+    </select>
+
     <select id="getList" parameterType="BoardDetail" resultType="BoardDetail">
         SELECT *
         FROM board_detail
@@ -27,7 +35,16 @@
         AND ${searchType} LIKE CONCAT('%', #{search}, '%')
         order by create_at ${sort}
         LIMIT #{startNum}, #{pageElement};
+    </select>
 
+    <select id="getMyList" parameterType="BoardDetail" resultType="BoardDetail">
+        SELECT *
+        FROM board_detail
+        WHERE board_type = #{boardType}
+        AND ${searchType} LIKE CONCAT('%', #{search}, '%')
+        AND member_code = #{memberCode}
+        order by create_at ${sort}
+        LIMIT #{startNum}, #{pageElement};
     </select>
 
     <select id="getDetail" parameterType="int" resultType="BoardDetail">

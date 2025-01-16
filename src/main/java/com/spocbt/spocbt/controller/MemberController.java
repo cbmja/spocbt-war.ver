@@ -1,6 +1,7 @@
 package com.spocbt.spocbt.controller;
 
 
+import com.spocbt.spocbt.dto.BoardDetail;
 import com.spocbt.spocbt.dto.Member;
 import com.spocbt.spocbt.dto.TestRecord;
 import com.spocbt.spocbt.service.MemberService;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -73,7 +75,7 @@ public class MemberController {
 
             model.addAttribute("isLogin" , (String)request.getAttribute("isLogin"));
 
-            model.addAttribute("selectedNav" , "history");
+            model.addAttribute("selectedNav" , "mypage");
             model.addAttribute("history",history);
             String nt = "";
             if(history.size() == 1 && !history.get(0).getErr().isBlank()){
@@ -82,8 +84,51 @@ public class MemberController {
                 nt = history.isEmpty() ? "시험 이력이 없습니다!!":"내 시험 이력을 확인하세요!!";
             }
             model.addAttribute("navText" , nt);
+            model.addAttribute("subMenu" , "history");
 
-            return "view/history";
+            return "view/mypage/history";
+
+        }catch (Exception e){
+            e.printStackTrace();
+
+            model.addAttribute("isErr" , "1");
+            model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+            return "util/prepare";
+        }
+
+    }
+
+    @GetMapping("/myBoard")
+    public String list(Model model, ServletRequest request, @RequestParam(name = "type" , defaultValue = "free")String type
+            , @RequestParam(name = "search" , defaultValue = "")String search
+            , @RequestParam(name = "searchType" , defaultValue = "title")String searchType
+            , @RequestParam(name = "page" , defaultValue = "1")String page
+            , @RequestParam(name = "sort" , defaultValue = "desc")String sort){
+
+        try{
+            String memberCode = (String)request.getAttribute("memberCode");
+            BoardDetail form = new BoardDetail();
+            form.setMemberCode(memberCode);
+            form.setSearch(search);
+            form.setSearchType(searchType);
+            form.setBoardType(type);
+            form.setPage(page);
+            form.setSort(sort);
+
+            Map<String , Object> r = memberService.getMyList(form);
+
+
+            model.addAttribute("list",(List<BoardDetail>)(r.get("list")));
+            model.addAttribute("page",(Page)(r.get("page")));
+            model.addAttribute("type" , type);
+            model.addAttribute("search" , search);
+            model.addAttribute("searchType" , searchType);
+            model.addAttribute("sort" , sort);
+            model.addAttribute("selectedNav" , "mypage");
+            model.addAttribute("subMenu" , "myBoard");
+            model.addAttribute("isLogin" , (String)request.getAttribute("isLogin"));
+            model.addAttribute("navText" , "내가 쓴 게시물");
+            return "view/mypage/myBoard";
 
         }catch (Exception e){
             e.printStackTrace();

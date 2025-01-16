@@ -24,7 +24,7 @@
             </form>
             <section class="mypage-container">
                 <img th:if="${isLogin == '1'}" src="/icon/profile.svg" class="mypage-btn">
-                <span th:if="${isLogin == '1'}" th:class="${selectedNav == 'history'} ? 'selected mypage-btn' : 'mypage-btn'" onclick="window.location.href='/member/history';">&nbsp;마이페이지</span>
+                <span th:if="${isLogin == '1'}" th:class="${selectedNav == 'mypage'} ? 'selected mypage-btn' : 'mypage-btn'" onclick="window.location.href='/member/history';">&nbsp;마이페이지</span>
                 <span th:if="${isLogin == '0'}" th:class="${selectedNav == 'login'} ? 'selected mypage-btn' : 'mypage-btn'" onclick="window.location.href='/member/login';">&nbsp;로그인 / 회원가입</span>
             </section>
             <span th:if="${isLogin == '1'}" style="margin-left: 10px; margin-right: 10px;" class="no-hover">&nbsp;/&nbsp;</span>

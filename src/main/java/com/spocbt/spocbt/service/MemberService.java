@@ -1,6 +1,8 @@
 package com.spocbt.spocbt.service;
 
 
+import com.spocbt.spocbt.controller.Page;
+import com.spocbt.spocbt.dto.BoardDetail;
 import com.spocbt.spocbt.dto.Exam;
 import com.spocbt.spocbt.dto.Member;
 import com.spocbt.spocbt.dto.TestRecord;
@@ -15,7 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -141,6 +145,44 @@ public class MemberService {
     }
 
 
+    @Transactional
+    public Map<String , Object> getMyList(BoardDetail form){
 
+        int total = sql.selectOne("com.spocbt.spocbt.mapper.BoardDetailMapper.getMyTotal",form);
+
+        Page page = new Page(Integer.parseInt(form.getPage()) , total);
+
+        form.setStartNum(page.getStartNum());
+        form.setPageElement(page.getPageElement());
+
+        List<BoardDetail> list = sql.selectList("com.spocbt.spocbt.mapper.BoardDetailMapper.getMyList",form);
+
+        for(BoardDetail b: list){
+            if(form.getBoardType().equals("free")){
+                b.setBoardType("자유게시판");
+            }
+            if(form.getBoardType().equals("question")){
+                b.setBoardType("질문게시판");
+            }
+
+            if(b.getContent().length() > 150){
+                b.setContent(b.getContent().substring(0, 149) + "......................");
+            }
+            if(b.getTitle().length() > 52){
+                b.setTitle(b.getTitle().substring(0, 51) + "...");
+            }
+            /*
+            Member member = sql.selectOne("com.spocbt.spocbt.mapper.MemberMapper.findByMemberCode",b.getMemberCode());
+
+            b.setMemberName(member.getName());
+            */
+        }
+
+        Map<String , Object> res = new HashMap<>();
+        res.put("page" , page);
+        res.put("list" , list);
+
+        return res;
+    }
 
 }

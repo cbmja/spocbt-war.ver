@@ -5,14 +5,18 @@
 
 
 <div layout:fragment="content">
-    <link rel="stylesheet" th:href="@{/css/view/myBoardList.css}">
+    <link rel="stylesheet" th:href="@{/css/view/myBoard.css}">
+
+    <th:block th:replace="~{view/mypage/menu :: menu}"></th:block>
+
     <div class="board-list-ar">
+
+
 
         <form class="board-search-form">
             <select name="search-type" id="searchType">
                 <option value="title" th:selected="${searchType == 'title'}">제목</option>
                 <option value="content" th:selected="${searchType == 'content'}">내용</option>
-                <option value="member_name" th:selected="${searchType == 'member_name'}">작성자</option>
                 <!--<option value="all">전체</option>-->
             </select>
             <input type="text" placeholder="&nbsp;&nbsp;search.." id="boardSearch" class="board-search" th:value="${search}">
@@ -23,12 +27,10 @@
 
         <div class="board-list-header">
             <div class="board-type">
-                <input type="radio" name="type" value="notice" id="notice" class="b-radio" th:checked="${type == 'notice'}"><label for="notice" class="b-radio">공지</label>
                 <input type="radio" name="type" value="free" id="free" class="b-radio" th:checked="${type == 'free'}"><label for="free" class="b-radio">자유</label>
                 <input type="radio" name="type" value="question" id="question" class="b-radio" th:checked="${type == 'question'}"><label for="question" class="b-radio">질문</label>
             </div>
             <div class="write-btn-ar">
-                <span class="write-btn" th:if="${type != 'notice'}">글쓰기</span>
             </div>
         </div>
 
@@ -38,7 +40,6 @@
                 <div class="b-e-t">
                     <div th:if="${type == 'question'}" class="b-badge" style="border: 2px solid #00C471; color: #00C471;" th:text="${ele.boardType}"></div>
                     <div th:if="${type == 'free'}" class="b-badge" style="border: 2px solid #0078C4; color: #0078C4;" th:text="${ele.boardType}"></div>
-                    <div th:if="${type == 'notice'}" class="b-badge" style="border: 2px solid #333B3D; color: #333B3D; font-size: 17px !important;" th:text="${ele.boardType}"></div>
 
                     <div class="b-title" th:text="${ele.title}">
                     </div>
@@ -63,14 +64,14 @@
 
         <div class="board-list-bottom">
             <div class="board-page-ar">
-                <a class="b-p-btn"  th:href="@{/board/list(page=${page.startPage} , type=${type} , search=${search} , searchType=${searchType} , sort=${sort})}"> << </a>
-                <a class="b-p-btn"  th:href="@{/board/list(page=${page.page -1} , type=${type} , search=${search} , searchType=${searchType} , sort=${sort})}"> < </a>
+                <a class="b-p-btn"  th:href="@{/member/myBoard(page=${page.startPage} , type=${type} , search=${search} , searchType=${searchType} , sort=${sort})}"> << </a>
+                <a class="b-p-btn"  th:href="@{/member/myBoard(page=${page.page -1} , type=${type} , search=${search} , searchType=${searchType} , sort=${sort})}"> < </a>
 
-                <a th:each="num : ${page.pages}" th:class="${num == page.page} ? 'b-p-btn checked':'b-p-btn'" th:text="${num}" th:href="@{/board/list(page=${num} , type=${type} , search=${search} , searchType=${searchType} , sort=${sort})}">
+                <a th:each="num : ${page.pages}" th:class="${num == page.page} ? 'b-p-btn checked':'b-p-btn'" th:text="${num}" th:href="@{/member/myBoard(page=${num} , type=${type} , search=${search} , searchType=${searchType} , sort=${sort})}">
                 </a>
 
-                <a class="b-p-btn"  th:href="@{/board/list(page=${page.page +1} , type=${type} , search=${search} , searchType=${searchType} , sort=${sort})}"> > </a>
-                <a class="b-p-btn"  th:href="@{/board/list(page=${page.endPage} , type=${type} , search=${search} , searchType=${searchType} , sort=${sort})}"> >> </a>
+                <a class="b-p-btn"  th:href="@{/member/myBoard(page=${page.page +1} , type=${type} , search=${search} , searchType=${searchType} , sort=${sort})}"> > </a>
+                <a class="b-p-btn"  th:href="@{/member/myBoard(page=${page.endPage} , type=${type} , search=${search} , searchType=${searchType} , sort=${sort})}"> >> </a>
 
             </div>
             <div style="width: 50%;">
@@ -82,8 +83,7 @@
 
 
 
-        <script th:src="@{/js/view/myBoardList.js}"></script>
+        <script th:src="@{/js/view/myBoard.js}"></script>
     </div>
-
 </div>
 </html>

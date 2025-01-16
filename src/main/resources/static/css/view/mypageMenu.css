@@ -1,0 +1,38 @@
+.mypage-menu{
+    width: 80%;
+
+    height: 70px;
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.mypage-menu-ele{
+    font-size: 23px;
+
+    color: #333B3D;
+    border-bottom: 2px solid #333B3D;
+
+    margin-left: 10px;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+@media (hover:hover) {
+    .mypage-menu-ele:hover{
+        color: #00C471 !important;
+        border-bottom: 2px solid #00C471;
+    }
+}
+
+.selected{
+    color: #00C471 !important;
+    border-bottom: 2px solid #00C471;
+}

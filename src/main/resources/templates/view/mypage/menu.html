@@ -1,0 +1,18 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="menu" class="mypage-menu">
+    <link rel="stylesheet" th:href="@{/css/view/mypageMenu.css}">
+
+    <span></span>
+
+    <span th:class="${subMenu == 'history'} ? 'selected mypage-menu-ele' : 'mypage-menu-ele'" data-type="history" >
+        시험 이력
+    </span>
+
+    <span th:class="${subMenu == 'myBoard'} ? 'selected mypage-menu-ele' : 'mypage-menu-ele'" data-type="myBoard">
+        내 게시물
+    </span>
+
+    <span></span>
+    <script th:src="@{/js/view/mypageMenu.js}"></script>
+</div>
+</html>

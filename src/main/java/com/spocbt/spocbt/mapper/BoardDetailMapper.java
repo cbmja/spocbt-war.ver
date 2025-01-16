@@ -13,9 +13,13 @@ public interface BoardDetailMapper {
 
     int getTotal(BoardDetail search);
 
+    int getMyTotal(BoardDetail form);
+
     BoardDetail getDetail(int boardSeq);
 
     List<BoardDetail> getList(BoardDetail form);
+
+    List<BoardDetail> getMyList(BoardDetail form);
 
     int deleteBoard(int boardSeq);
 
