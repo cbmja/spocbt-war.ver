@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+
+<div layout:fragment="content">
+    <link rel="stylesheet" th:href="@{/css/view/myBoardList.css}">
+    <div class="board-list-ar">
+
+        <form class="board-search-form">
+            <select name="search-type" id="searchType">
+                <option value="title" th:selected="${searchType == 'title'}">제목</option>
+                <option value="content" th:selected="${searchType == 'content'}">내용</option>
+                <option value="member_name" th:selected="${searchType == 'member_name'}">작성자</option>
+                <!--<option value="all">전체</option>-->
+            </select>
+            <input type="text" placeholder="&nbsp;&nbsp;search.." id="boardSearch" class="board-search" th:value="${search}">
+            <section class="board-search-btn">
+                <img src="/icon/search.svg" style="width: 29px; height: 29px;" id="board-search-btn">
+            </section>
+        </form>
+
+        <div class="board-list-header">
+            <div class="board-type">
+                <input type="radio" name="type" value="notice" id="notice" class="b-radio" th:checked="${type == 'notice'}"><label for="notice" class="b-radio">공지</label>
+                <input type="radio" name="type" value="free" id="free" class="b-radio" th:checked="${type == 'free'}"><label for="free" class="b-radio">자유</label>
+                <input type="radio" name="type" value="question" id="question" class="b-radio" th:checked="${type == 'question'}"><label for="question" class="b-radio">질문</label>
+            </div>
+            <div class="write-btn-ar">
+                <span class="write-btn" th:if="${type != 'notice'}">글쓰기</span>
+            </div>
+        </div>
+
+        <div class="board-content-ar">
+
+            <div class="board-element" th:each="ele : ${list}" th:data-boardseq="${ele.boardSeq}">
+                <div class="b-e-t">
+                    <div th:if="${type == 'question'}" class="b-badge" style="border: 2px solid #00C471; color: #00C471;" th:text="${ele.boardType}"></div>
+                    <div th:if="${type == 'free'}" class="b-badge" style="border: 2px solid #0078C4; color: #0078C4;" th:text="${ele.boardType}"></div>
+                    <div th:if="${type == 'notice'}" class="b-badge" style="border: 2px solid #333B3D; color: #333B3D; font-size: 17px !important;" th:text="${ele.boardType}"></div>
+
+                    <div class="b-title" th:text="${ele.title}">
+                    </div>
+                </div>
+
+                <div class="b-e-sub" th:text="${ele.content}">
+                    <!--내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용..............-->
+                </div>
+
+                <div class="b-e-bottom">
+                    <div class="b-left" th:text="${ele.createAt}">
+
+                    </div>
+                    <div class="b-right">
+                        작성자: [[${ele.memberName}]] / 조회수: ...<!--[[${ele.viewCnt}]]-->
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="board-list-bottom">
+            <div class="board-page-ar">
+                <a class="b-p-btn"  th:href="@{/board/list(page=${page.startPage} , type=${type} , search=${search} , searchType=${searchType} , sort=${sort})}"> << </a>
+                <a class="b-p-btn"  th:href="@{/board/list(page=${page.page -1} , type=${type} , search=${search} , searchType=${searchType} , sort=${sort})}"> < </a>
+
+                <a th:each="num : ${page.pages}" th:class="${num == page.page} ? 'b-p-btn checked':'b-p-btn'" th:text="${num}" th:href="@{/board/list(page=${num} , type=${type} , search=${search} , searchType=${searchType} , sort=${sort})}">
+                </a>
+
+                <a class="b-p-btn"  th:href="@{/board/list(page=${page.page +1} , type=${type} , search=${search} , searchType=${searchType} , sort=${sort})}"> > </a>
+                <a class="b-p-btn"  th:href="@{/board/list(page=${page.endPage} , type=${type} , search=${search} , searchType=${searchType} , sort=${sort})}"> >> </a>
+
+            </div>
+            <div style="width: 50%;">
+                <!--<span class="write-btn" th:if="${type != 'notice'}">글쓰기</span>-->
+            </div>
+        </div>
+
+
+
+
+
+        <script th:src="@{/js/view/myBoardList.js}"></script>
+    </div>
+
+</div>
+</html>
