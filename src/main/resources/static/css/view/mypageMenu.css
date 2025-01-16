@@ -29,6 +29,7 @@
     .mypage-menu-ele:hover{
         color: #00C471 !important;
         border-bottom: 2px solid #00C471;
+        cursor: pointer;
     }
 }
 
