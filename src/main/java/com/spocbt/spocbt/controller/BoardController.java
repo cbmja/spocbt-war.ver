@@ -6,6 +6,8 @@ import com.spocbt.spocbt.dto.Comment;
 import com.spocbt.spocbt.service.BoardService;
 import jakarta.servlet.ServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,7 @@ import java.util.Map;
 public class BoardController {
 
     private final BoardService boardService;
+    private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 
     // 25-01-14 - 1차 ok
     // 게시판 목록
@@ -148,7 +151,7 @@ public class BoardController {
             return "view/boardDetail";
         }catch (Exception e){
             e.printStackTrace();
-
+            logger.error("endpoint---------------------------/border/detail",e);
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
             model.addAttribute("selectedNav" , "board");

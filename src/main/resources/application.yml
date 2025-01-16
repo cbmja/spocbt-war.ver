@@ -31,10 +31,12 @@ logging:
     #org.mybatis: DEBUG
     #org.mybatis.spring: DEBUG
     #org.mybatis.spring.SqlSessionUtils: WARN
-    jdbc.sqlonly: DEBUG
-    org.apache.ibatis: DEBUG
-    org.mybatis: DEBUG
-    java.sql: DEBUG
+    jdbc.sqlonly: ERROR
+    org.apache.ibatis: ERROR
+    org.mybatis: ERROR
+    java.sql: ERROR
+  file:
+    name: C:\Users\jeon\Desktop\온라인 자격증 시험\app-error.log # 에러 로그 파일 이름
 
 hash:
   access_secret: adsfagsdreaasdvcaasdftgsdaasdfgas
