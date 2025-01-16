@@ -1,0 +1,48 @@
+.header-ar{
+    height: 39px;
+    width: 100%;
+
+    border-bottom: 1px solid #E3E6EA;
+
+    background-color: #FFFFFF;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.header-ar div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: 50%;
+}
+
+.header-left{
+    padding-left: 7%;
+    justify-content: flex-start;
+}
+
+.header-right{
+    padding-right: 7%;
+    justify-content: flex-end;
+}
+
+.header-ar span{
+    font-size: 13px;
+
+    color: #8C939E;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.header-ar span:hover{
+    color: #1B1C1D;
+
+    cursor: pointer;
+}

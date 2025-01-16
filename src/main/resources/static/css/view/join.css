@@ -1,0 +1,144 @@
+.join-form-ar{
+    width: 50%;
+    height: 1300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-top: 30px;
+}
+
+.join-title{
+    width: 100%;
+    height:45px;
+
+    border-left: 3px solid #00C471;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-top: 30px;
+    margin-bottom: 10px;
+
+    padding-left: 10px;
+}
+
+.i-title{
+    color: #333B3D;
+
+    font-size: 20px;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.i-width{
+
+    all: unset;
+
+    width: 100%;
+    height: 50px;
+
+    border-radius: 8px;
+
+    border: 1px solid #CED4DA;
+
+    background-color: #F6F6F6;
+
+    padding-left: 13px;
+
+    font-size: 13px;
+
+    color: #333B3D;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+}
+.r-h:hover{
+    cursor: pointer;
+}
+
+.i-width:focus , .i-width:hover{
+    border: 1px solid #00C471;
+}
+
+.i-width::placeholder{
+    font-size: 13px;
+
+    color: #BCBCBC;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.form-d{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.join-btn{
+    width: 102%;
+    height: 70px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #00C471;
+
+    color: #FFFFFF;
+
+    font-size: 30px;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+
+    margin-top: 30px;
+
+    border-radius: 8px;
+}
+
+.dup-check{
+    width: 25%;
+    height: 100%;
+
+    background-color: #0078C4;
+
+    border-radius: 8px;
+
+    color: #FFFFFF;
+
+    font-size: 20px;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media (hover:hover){
+    .dup-check:hover , .join-btn:hover{
+        cursor: pointer;
+        box-shadow: 0 2px 9px rgba(10, 10, 10, 0.3);
+    }
+}

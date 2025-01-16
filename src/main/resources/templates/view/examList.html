@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+
+<div layout:fragment="content">
+    <link rel="stylesheet" th:href="@{/css/view/examList.css}">
+<div class="examList-ar">
+    <form class="examList-form">
+        <select name="examCode" id="examCode">
+            <option value="LSI_2" >2급 생활스포츠지도사</option>
+            <option value="ASI_2">2급 장애인스포츠지도사</option>
+            <option value="PSI_2">2급 전문스포츠지도사</option>
+            <option value="SSI">노인스포츠지도사</option>
+            <option value="YSI">유소년스포츠지도사</option>
+            <option value="HEM">건강운동관리사</option>
+            <option value="LSI_1">1급 생활스포츠지도사</option>
+            <option value="ASI_1">1급 장애인스포츠지도사</option>
+            <option value="PSI_1">1급 전문스포츠지도사</option>
+        </select>
+<!--        <span class="exam-element-sub" style="color: #0078C4 !important;">
+            시험 선택
+        </span>-->
+        <div class="exam-sort">
+            <input type="radio" name="examSort" value="desc" checked  id="exam-desc" class="exam-radio"><label for="exam-desc" class="exam-radio exam-element-sub" style="color: #0078C4; !important; margin-left: 0 !important;">최신순</label>
+            <input type="radio" name="examSort" value="asc"  id="exam-asc" class="exam-radio"><label for="exam-asc" class="exam-radio exam-element-sub" style="color: #0078C4; !important; margin-left: 0 !important;">오래된순</label>
+            <span style="margin-right: 10px; margin-left: 10px;"></span>
+            <input type="checkbox" name="isAble" value="1"  id="isAble" class="exam-radio"><label for="isAble" class="exam-radio exam-element-sub" style="color: #00C471; !important; margin-left: 0 !important;">응시가능만보기</label>
+        </div>
+    </form>
+    <div class="examList-list">
+        <!--element ssss-->
+        <div class="era" style="width: 100%; height: 100%;">
+        <input type="hidden" th:value="${isLogin}" id="isLogin">
+        <input type="hidden" th:value="${exam.electiveCnt}" id="eleCnt">
+        <div th:each="year : ${updateYears}" class="exam-element" th:data-year="${year}" th:data-title="${exam.examTitle}" th:attr="data-isupdate=${!realUpdateYear.contains(year) ? '0' : '1'}">
+            <div class="exam-element-top">
+                <div class="exam-badge" th:style="${!realUpdateYear.contains(year) ? 'background-color: #F6F6F6 !important; hover: none !important; border: 2px solid #CED4DA !important;' : ''}">
+                    <span th:if="${realUpdateYear.contains(year)}">응시가능</span>
+                    <span th:unless="${realUpdateYear.contains(year)}" style="color: #CED4DA !important;">준비중</span>
+                </div>
+                <span class="exam-element-title" th:style="${!realUpdateYear.contains(year) ? 'color: #8C939E !important;' : ''}">
+                    [[${year}]]년도 [[${exam.examTitle}]]
+                </span>
+                <span th:if="${realUpdateYear.contains(year)}" class="exam-element-sub" style="margin-left: auto; margin-right: 10px; color: #00C471 !important;">
+                    click !!
+                </span>
+
+                <span th:if="${!realUpdateYear.contains(year)}" class="exam-element-sub" style="margin-left: auto; margin-right: 10px; color: #CED4DA !important;">
+                    await ..
+                </span>
+            </div>
+            <div style="height: calc(100% - 100px);"></div>
+            <div class="exam-element-middle">
+                <div style="width: 50%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;">
+                    <span class="exam-element-sub" th:style="${!realUpdateYear.contains(year) ? ' color: #99CBE7; !important' : ' color: #0078C4; !important'}">
+                        [[${year}]]년도
+                    </span>
+                    <span class="exam-element-sub">
+                        응시자 수: 준비중 | 합격률: 준비중
+                    </span>
+                </div>
+                <div style="width: 50%; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start;">
+                    <span class="exam-element-sub" th:style="${!realUpdateYear.contains(year) ? ' color: #99CBE7; !important' : ' color: #0078C4; !important'}">
+                        모의시험
+                    </span>
+                    <span class="exam-element-sub">
+                        응시자 수: 준비중 | 합격률: 준비중
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-overlay">
+            <div class="modal">
+                <div class="modal-top">
+                    <span id="closeModal">X</span>
+                </div>
+
+                <div class="modal-title">
+                </div>
+
+                <div class="modal-sub">
+                    <span>선택과목과 시험 타입을 선택해 주세요.</span>
+                </div>
+
+                <div class="modal-main">
+                    <div class="modal-table">
+                        <div class="table-row"  style="margin-bottom: 15px;">
+                            <div class="table-td required-background required-cnt1">
+                                <span class="required-cnt" th:if="${exam.requiredCnt == 0}">필수 0과목</span>
+                                <span class="required-cnt" th:if="${exam.requiredCnt != 0}">필수 [[${exam.requiredCnt}]]과목</span>
+                                <span class="sub-type-badge required-badge1">필수</span>
+                            </div>
+                            <div class="table-td elective-cnt1" style="background-color: #F7F4F2;">
+                                <span class="elective-cnt" th:if="${exam.electiveCnt != 0}">선택 [[${exam.electiveOptionCnt}]] 중 택 [[${exam.electiveCnt}]]</span>
+                                <span class="elective-cnt" th:if="${exam.electiveCnt == 0}">선택 0과목</span>
+                                <span class="sub-type-badge elective-badge1">선택</span>
+                            </div>
+                            <div class="table-td2">
+                                <label for="exam-A" class="exam-radio"><input class="exam-radio" type="radio" name="examType" value="A" id="exam-A" checked>A타입</label>
+                                <label for="exam-B" class="exam-radio"><input class="exam-radio" type="radio" name="examType" value="B" id="exam-B" style="margin-left: 15px;">B타입</label>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-td table-ex-sub" id="HTA">
+                                <span class="sub">건강·체력 평가</span>
+                            </div>
+                            <div class="table-td table-ex-sub" id="HE">
+                                <span class="sub">건강교육론</span>
+                            </div>
+                            <div class="table-td table-ex-sub" id="FA"><span class="sub">기능해부학</span></div>
+                            <div class="table-td table-ex-sub" id="SPA"><span class="sub">노인체육론</span></div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-td table-ex-sub" id="PA"><span class="sub">병태생리학</span></div>
+                            <div class="table-td table-ex-sub elective-background" id="SE"><span class="sub">스포츠교육학</span><span class="sub-type-badge elective-badge">선택</span></div>
+                            <div class="table-td table-ex-sub elective-background" id="SS"><span class="sub">스포츠사회학</span><span class="sub-type-badge elective-badge">선택</span></div>
+                            <div class="table-td table-ex-sub elective-background" id="SP"><span class="sub">스포츠심리학</span><span class="sub-type-badge elective-badge">선택</span></div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-td table-ex-sub" id="SN"><span class="sub">스포츠영양학</span></div>
+                            <div class="table-td table-ex-sub elective-background" id="SETH"><span class="sub">스포츠윤리</span><span class="sub-type-badge elective-badge">선택</span></div>
+                            <div class="table-td table-ex-sub" id="ELT"><span class="sub">운동부하검사</span></div>
+                            <div class="table-td table-ex-sub" id="IE"><span class="sub">운동상해</span></div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-td table-ex-sub elective-background" id="EP"><span class="sub">운동생리학</span><span class="sub-type-badge elective-badge">선택</span></div>
+                            <div class="table-td table-ex-sub elective-background" id="EB"><span class="sub">운동역학</span><span class="sub-type-badge elective-badge">선택</span></div>
+                            <div class="table-td table-ex-sub" id="EPD"><span class="sub">운동처방론</span></div>
+                            <div class="table-td table-ex-sub" id="PAE"><span class="sub">유아체육론</span></div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-td table-ex-sub" id="APS"><span class="sub">장애인스포츠론</span></div>
+                            <div class="table-td table-ex-sub" id="PME"><span class="sub">체육측정평가론</span></div>
+                            <div class="table-td table-ex-sub" id="TRN"><span class="sub">트레이닝론</span></div>
+                            <div class="table-td table-ex-sub" id="SPE"><span class="sub">특수체육론</span></div>
+                        </div>
+                        <div class="table-row">
+                            <div class="table-td table-ex-sub elective-background" id="KHS"><span class="sub">한국체육사</span><span class="sub-type-badge elective-badge">선택</span></div>
+                            <div class="table-td td-bottom">
+                                <span th:if="${exam.electiveCnt == 0}">선택과목은 없습니다.</span>
+                                <span th:if="${exam.electiveCnt != 0}">선택과목 현재 N 개 선택 / 총 [[${exam.electiveCnt}]] 개를 선택해야 합니다.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-button-ar" id="exam-btn">
+                    <span>시험 응시</span>
+                </div>
+            </div>
+        </div>
+
+        </div>
+        <!--element eeee-->
+    </div>
+
+
+    <div class="h-100"></div>
+</div>
+
+
+
+    <script th:src="@{/js/view/examList.js}"></script>
+</div>
+
+</html>

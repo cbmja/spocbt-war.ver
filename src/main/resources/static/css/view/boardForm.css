@@ -1,0 +1,185 @@
+
+.board-form-ar{
+    width: 60%;
+    min-height: 1300px;
+    margin: 30px auto;
+}
+
+@media (hover: hover) {
+    .board-form-ar {
+        min-height: 500px !important;
+    }
+}
+
+
+.board-top-ar{
+    width: 100%;
+    height: 60px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+@media (hover: hover) {
+    .b-t-type{
+        font-size: 25px !important;
+    }
+}
+.b-t-type{
+    width: 19%;
+    height: 100%;
+
+    border-radius: 8px;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    border: 1px solid #CED4DA;
+
+    background-color: #F6F6F6;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 17px;
+
+    color: #333B3D;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.b-t-title{
+
+    all: unset;
+
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    font-size: 17px;
+
+    color: #333B3D;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    width: 78%;
+    height: 100%;
+
+    margin-left: 3%;
+
+    border-radius: 8px;
+
+    border: 1px solid #CED4DA;
+
+    background-color: #FFFFFF;
+
+    word-wrap: break-word; /* 긴 단어를 줄바꿈 */
+    word-break: break-word; /* 긴 단어를 줄바꿈 (유사 효과) */
+    white-space: normal;
+}
+
+.b-sub{
+
+    all: unset;
+
+    padding: 13px;
+
+    font-size: 15px;
+
+    color: #333B3D;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+
+    width: calc(100% - 26px);
+    min-height: 424px;
+
+    margin-top: 17px;
+
+    border-radius: 8px;
+
+    border: 1px solid #CED4DA;
+
+    background-color: #FFFFFF;
+
+    overflow: hidden;
+}
+
+.b-submit-btn{
+
+    width: 100%;
+    height: 57px;
+
+    font-size: 20px;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+
+    color: #FFFFFF;
+
+    margin-top: 17px;
+
+    border-radius: 8px;
+
+    border: 1px solid #CED4DA;
+
+    background-color: #00C471;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.b-edit-btn{
+   width: 100%;
+    height: 57px;
+
+    font-size: 20px;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+
+    color: #FFFFFF;
+
+    margin-top: 17px;
+
+    border-radius: 8px;
+
+    border: 1px solid #CED4DA;
+
+    background-color: #00C471;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (hover:hover){
+    .b-submit-btn:hover , .b-edit-btn:hover{
+        cursor: pointer;
+        box-shadow: 0 2px 9px rgba(10, 10, 10, 0.3);
+    }
+}

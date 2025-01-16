@@ -1,0 +1,41 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<nav th:fragment="navbar" class="nav-ar">
+
+    <div class="nav-menu">
+        <div class="nav-left">
+            <span onclick="window.location.href='/exam/list';" th:class="${selectedNav == 'test'} ? 'selected' : ''">모의시험</span>
+            <section class="w-3"></section>
+            <section class="w-3" ></section><!--style="border-left: 2px solid #000000;"-->
+            <span onclick="window.location.href='/board/list';" th:class="${selectedNav == 'board'} ? 'selected' : ''">게시판</span>
+            <section class="w-3"></section>
+            <section class="w-3" ></section><!--style="border-left: 2px solid #000000;"-->
+            <span th:class="${selectedNav == 'past'} ? 'selected await-menu' : 'await-menu'" >기출</span>
+            <section class="w-3"></section>
+            <section class="w-3" ></section><!--style="border-left: 2px solid #000000;"-->
+            <span th:class="${selectedNav == 'practical'} ? 'selected await-menu' : 'await-menu'">실기</span>
+        </div>
+        <div class="nav-right">
+            <form class="nav-search-form" style="display: none !important;">
+                <input type="text" placeholder="&nbsp;&nbsp;search.." name="navSearch" class="nav-search">
+                <section class="nav-search-btn">
+                    <img src="/icon/search.svg" style="width: 29px; height: 29px;">
+                </section>
+
+            </form>
+            <section class="mypage-container">
+                <img th:if="${isLogin == '1'}" src="/icon/profile.svg" class="mypage-btn">
+                <span th:if="${isLogin == '1'}" th:class="${selectedNav == 'history'} ? 'selected mypage-btn' : 'mypage-btn'" onclick="window.location.href='/member/history';">&nbsp;마이페이지</span>
+                <span th:if="${isLogin == '0'}" th:class="${selectedNav == 'login'} ? 'selected mypage-btn' : 'mypage-btn'" onclick="window.location.href='/member/login';">&nbsp;로그인 / 회원가입</span>
+            </section>
+            <span th:if="${isLogin == '1'}" style="margin-left: 10px; margin-right: 10px;" class="no-hover">&nbsp;/&nbsp;</span>
+            <span th:if="${isLogin == '1'}" class="logout-btn" style="color:#CB0000 !important;" onclick="window.location.href='/member/logout';">로그아웃</span>
+
+        </div>
+    </div>
+    <div class="nav-bottom">
+        <span th:text="${navText}"></span>
+        <!--<span style="font-size: 15px !important; font-weight: 400;">::&nbsp;&nbsp;이제 프린트는 그만!! 기출문제를 온라인으로 풀어보세요&nbsp;&nbsp;::</span>-->
+    </div>
+
+</nav>
+</html>

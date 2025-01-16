@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+
+<div layout:fragment="content">
+    <link rel="stylesheet" th:href="@{/css/view/mypage.css}">
+
+<div class="my-test-history">
+    <table class="history-table" style="margin-top: 10px; margin-bottom: 10px;">
+        <thead>
+        <tr class="his-ti">
+            <th><span>NO</span></th>
+            <th><span>응시일자</span></th>
+            <th><span>시험명</span></th>
+            <th><span>년도</span></th>
+            <th><span>타입</span></th>
+            <th><span>총점</span></th>
+            <th><span>결과</span></th>
+            <th><span>상세</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="test : ${history}"  class="his-su">
+            <td><span th:text="${test.no}"></span></td>
+            <td><span th:text="${test.testDate}"></span></td>
+            <td><span th:text="${test.examTitle}"></span></td>
+            <td><span th:text="${test.year}"></span></td>
+            <td><span th:text="${test.type}"></span></td>
+            <td><span th:text="${test.testScore}"></span></td>
+            <td><span th:text="${test.pn}" th:class="${test.pn == 'pass'} ? 'pass-class' : 'failure-class'"></span></td>
+            <td><button class="history-detail-btn" th:data-testcode="${test.testCode}" style="width: 45px; height: 80%;" th:data-year="${test.year}" th:data-type="${test.type}" th:data-title="${test.examTitle}" >상세</button></td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+    <div class="score-modal-overlay">
+        <div class="score-modal">
+
+            <div class="s-modal-t" id="exma-info-ar">
+
+            </div>
+            <div class="s-modal-t" style="border: none !important;" id="total-score">
+
+                <!--                <span class="modal-title-mi"> *필기 합격 기준: 과목마다 만점의 40% 이상 득점하고 전 과목 총점 60% 이상 득점 </span>
+                                <span class="modal-title-mi"> *모든 문제는 5점으로 채점&nbsp&nbsp&nbsp*총점: (응시 과목 수) x 100&nbsp&nbsp&nbsp*마이페이지에서 응시 이력 확인 가능</span>-->
+            </div>
+
+
+            <div class="score-ar" id="score-t-ar">
+
+            </div>
+
+            <div class="score-ar" id="score-s-ar" style="margin-top: 3px !important; margin-bottom: 20px !important;">
+
+            </div>
+
+            <div style="width: 100%; height: 307px; display: flex; flex-direction: column; align-items: center;">
+                <div class="omr-ar">
+                    <div class="omr-title">
+                        <span>과목&nbsp&nbsp&nbsp\&nbsp&nbsp&nbsp보기</span>
+                    </div>
+                    <div class="ans-div">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                        <span>13</span>
+                        <span>14</span>
+                        <span>15</span>
+                        <span>16</span>
+                        <span>17</span>
+                        <span>18</span>
+                        <span>19</span>
+                        <span>20</span>
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot11">
+                        <span id="ot1"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot111">
+
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot22">
+                        <span id="ot2"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot222">
+
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot33">
+                        <span id="ot3"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot333">
+
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot44">
+                        <span id="ot4"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot444">
+
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot55">
+                        <span id="ot5"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot555">
+
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot66">
+                        <span id="ot6"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot666">
+
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot77">
+                        <span id="ot7"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot777">
+
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot88">
+                        <span id="ot8"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot888">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-button-ar2" id="close-detail">
+                <a>닫기</a>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/view/mypage.js}"></script>
+</div>
+</html>

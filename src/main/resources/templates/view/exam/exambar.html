@@ -1,0 +1,170 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<header th:fragment="exambar" class="exam-header-ar">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/exam/exam.css}">
+
+    <div class="exam-h-show" style="display: none;">
+        <span class="show-span">정보창 나타내기</span>
+    </div>
+
+    <button class="exam-submit-btn" id="ex-sub-btn">시험 제출</button>
+
+    <div class="exam-header">
+        <div class="exam-header-top">
+            <span>현재 응시중인 시험 : [[${year}]] 년도 / [[${exam.examTitle}]] / [[${type}]] 타입 </span>
+            <input type="hidden" id="examCode" th:value="${exam.examCode}">
+            <input type="hidden" id="year" th:value="${year}">
+            <input type="hidden" id="type" th:value="${type}">
+            <input type="hidden" id="elesubs" th:value="${elesubs}">
+            <input type="hidden" id="reqsubs" th:value="${reqsubs}">
+            <input type="hidden" id="memberCode" th:value="${memberCode}">
+        </div>
+
+        <div class="exam-header-middle">
+            <span th:each="sub : ${reqs}" class="exam-sub-sub req-sub-btn">[[${sub.subjectName}]]</span>
+        </div>
+        <div class="exam-header-bottom">
+            <span th:each="sub : ${eles}" class="exam-sub-sub ele-sub-btn">[[${sub.subjectName}]]</span>
+        </div>
+
+        <div style="width: 100%; height: 25px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid #CED4DA;;">
+            <span class="exam-sub-mini">*위 과목만 응시해주세요.</span>&nbsp;&nbsp;<span></span> <span class="exam-sub-click">*클릭시 해당 과목으로 이동합니다.</span>
+        </div>
+
+        <div class="exam-h-hide">
+            <span class="hide-span">정보창 숨기기</span>
+        </div>
+    </div>
+
+    <div class="score-modal-overlay">
+        <div class="score-modal">
+
+            <div class="s-modal-t">
+                <span>[[${year}]] 년도 [[${exam.examTitle}]] / [[${type}]] 타입</span>
+            </div>
+            <div class="s-modal-t" style="border: none !important;" id="total-score">
+
+<!--                <span class="modal-title-mi"> *필기 합격 기준: 과목마다 만점의 40% 이상 득점하고 전 과목 총점 60% 이상 득점 </span>
+                <span class="modal-title-mi"> *모든 문제는 5점으로 채점&nbsp&nbsp&nbsp*총점: (응시 과목 수) x 100&nbsp&nbsp&nbsp*마이페이지에서 응시 이력 확인 가능</span>-->
+            </div>
+
+
+            <div class="score-ar" id="score-t-ar">
+
+            </div>
+
+            <div class="score-ar" id="score-s-ar" style="margin-top: 3px !important; margin-bottom: 20px !important;">
+
+            </div>
+
+            <div style="width: 100%; height: 307px; display: flex; flex-direction: column; align-items: center;">
+                <div class="omr-ar">
+                    <div class="omr-title">
+                        <span>과목&nbsp&nbsp&nbsp\&nbsp&nbsp&nbsp보기</span>
+                    </div>
+                    <div class="ans-div">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span>12</span>
+                        <span>13</span>
+                        <span>14</span>
+                        <span>15</span>
+                        <span>16</span>
+                        <span>17</span>
+                        <span>18</span>
+                        <span>19</span>
+                        <span>20</span>
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot11">
+                        <span id="ot1"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot111">
+
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot22">
+                        <span id="ot2"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot222">
+
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot33">
+                        <span id="ot3"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot333">
+
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot44">
+                        <span id="ot4"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot444">
+
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot55">
+                        <span id="ot5"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot555">
+
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot66">
+                        <span id="ot6"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot666">
+
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot77">
+                        <span id="ot7"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot777">
+
+                    </div>
+                </div>
+                <div class="omr-ar">
+                    <div class="" id="ot88">
+                        <span id="ot8"></span>
+                    </div>
+                    <div class="ans-div mans" id="ot888">
+
+                    </div>
+                </div>
+            </div>
+
+
+            <span class="modal-title-mi"> *내가 제출한 시험지 입니다. (0은 미제출) </span>
+            <div class="modal-button-ar2" id="go-list">
+                <a href="/exam/list">목록으로</a>
+            </div>
+
+        </div>
+    </div>
+
+<!--<script th:src="@{/js/jquery-3.7.1.min.js}"></script>-->
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script th:src="@{/js/exam/exam.js}"></script>
+</header>
+</html>

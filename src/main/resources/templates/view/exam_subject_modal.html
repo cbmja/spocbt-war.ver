@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background-color: #f4f4f4;
+        }
+
+
+        .modal h2 {
+          margin: 0 0 10px;
+        }
+        .modal button {
+          margin-top: 10px;
+          padding: 10px 20px;
+          border: none;
+          background: #007bff;
+          color: #fff;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .modal button:hover {
+          background: #0056b3;
+        }
+        .open-modal-btn {
+          padding: 10px 20px;
+          border: none;
+          background: #28a745;
+          color: #fff;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .open-modal-btn:hover {
+          background: #218838;
+        }
+    </style>
+</head>
+<body>
+<button class="open-modal-btn">Open Modal</button>
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <h2>Modal Title</h2>
+        <p>This is a simple modal example.</p>
+        <button id="closeModal">Close</button>
+    </div>
+</div>
+
+<script>
+    const openModalBtn = document.querySelector('.open-modal-btn');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const closeModalBtn = document.getElementById('closeModal');
+
+    openModalBtn.addEventListener('click', () => {
+      modalOverlay.style.display = 'flex';
+    });
+
+    closeModalBtn.addEventListener('click', () => {
+      modalOverlay.style.display = 'none';
+    });
+
+    // Close modal when clicking outside the modal content
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        modalOverlay.style.display = 'none';
+      }
+    });
+</script>
+</body>
+</html>

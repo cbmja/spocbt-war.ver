@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+
+<div layout:fragment="content">
+    <link rel="stylesheet" th:href="@{/css/view/login.css}">
+
+<div class="login-ar">
+
+    <div class="login-btn kakao-login" data-type="kakao" style="margin-top: 70px;">
+        <span>kakao로 로그인</span>
+    </div>
+    <div class="login-btn naver-login" data-type="naver">
+        <span>naver로 로그인</span>
+    </div>
+    <div class="login-btn google-login" data-type="google">
+        <span>google로 로그인</span>
+    </div>
+    <div class="login-btn sms-login" data-type="sms">
+        <span>전화번호로 로그인</span>
+    </div>
+
+</div>
+
+    <script th:src="@{/js/view/login.js}"></script>
+</div>
+
+</html>

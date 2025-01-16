@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spocbt.spocbt.mapper.UpdateExamMapper">
+
+    <select id="findByExamCode" parameterType="UpdateExam" resultType="UpdateExam">
+        SELECT year FROM update_exam WHERE exam_code = #{examCode} GROUP BY year order BY year ${sort};
+    </select>
+
+    <select id="findUpdateExam" parameterType="UpdateExam" resultType="UpdateExam">
+        SELECT * FROM update_exam WHERE exam_code = #{examCode} AND year = #{year} AND type = #{type};
+    </select>
+
+
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spocbt.spocbt.mapper.MemberMapper">
+
+    <select id="isUser" resultType="Member" parameterType="Member">
+        SELECT * FROM member WHERE login_type = #{loginType} AND login_id = #{loginId};
+    </select>
+
+    <insert id="save" parameterType="Member">
+        INSERT INTO member (member_code , login_type , login_id , state , email , job , age , name)
+        VALUES (#{memberCode} , #{loginType} , #{loginId} , #{state} , #{email} , #{job} , #{age} , #{name})
+    </insert>
+
+    <select id="findByMemberCode" resultType="Member" parameterType="String">
+        SELECT * FROM member WHERE member_code = #{memberCode};
+    </select>
+
+    <select id="checkName" resultType="Member" parameterType="String">
+        SELECT * FROM member WHERE name = #{name};
+    </select>
+
+</mapper>

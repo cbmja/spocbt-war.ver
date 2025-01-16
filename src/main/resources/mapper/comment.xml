@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spocbt.spocbt.mapper.CommentMapper">
+
+    <insert id="save" parameterType="Comment">
+        INSERT INTO comment (member_code , content , board_seq)
+        VALUES (#{memberCode} , #{content} , #{boardSeq});
+    </insert>
+
+    <select id="dupCheck" parameterType="Comment" resultType="Comment">
+        SELECT * FROM comment WHERE content = #{content} AND board_seq = #{boardSeq};
+    </select>
+
+    <select id="getList" parameterType="int" resultType="Comment">
+        SELECT * FROM comment WHERE board_seq = #{boardSeq} ORDER BY create_at desc;
+    </select>
+
+    <select id="findByCommentSeq" parameterType="int" resultType="Comment">
+        SELECT * FROM comment WHERE comment_seq = #{commentSeq};
+    </select>
+
+    <delete id="deleteComment" parameterType="int">
+        DELETE FROM comment WHERE comment_seq = #{commentSeq};
+    </delete>
+
+    <update id="updateComment" parameterType="Comment">
+        UPDATE comment
+        SET
+        content = #{content},
+        update_at = NOW()
+        WHERE comment_seq = #{commentSeq};
+    </update>
+
+</mapper>

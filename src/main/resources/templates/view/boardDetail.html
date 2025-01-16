@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+
+<div layout:fragment="content">
+    <link rel="stylesheet" th:href="@{/css/view/boardDetail.css}">
+    <div class="board-form-ar">
+
+        <div class="board-top-ar">
+            <div class="b-t-type" th:text="${type}">
+            </div>
+
+            <span id="title" class="b-t-title" th:text="${detail.title}"></span>
+
+        </div>
+
+        <textarea class="b-sub" id="content" th:text="${detail.content}" readonly></textarea>
+        <input type="hidden" id="board-seq" th:value="${detail.boardSeq}">
+        <input type="hidden" id="board-type" th:value="${detail.boardType}">
+        <input type="hidden" id="is-login" th:value="${isLogin}">
+        <!--<div class="b-submit-btn" th:data-boardtype="${type}">수정</div>-->
+
+        <div class="middle-ar">
+            <div class="m-left">
+                <span class="detail-info">[[${detail.createAt}]]&nbsp;&nbsp;|&nbsp;&nbsp;[[${detail.memberName}]]</span>
+            </div>
+            <div class="m-right" th:if="${detail.memberCode == memberCode}">
+                <span class="board-edit" th:data-boardseq="${detail.boardSeq}">수정</span>
+                <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                <span class="board-delete" th:data-boardseq="${detail.boardSeq}">삭제</span>
+            </div>
+            <div class="m-right" th:if="${detail.memberCode != memberCode}">
+            </div>
+        </div>
+
+        <textarea class="comment-form" id="comment-content" placeholder="댓글" wrap="hard"></textarea>
+        <div class="comment-ar">
+            <div class="comment-sub">
+                내용과 무관한 댓글은 삭제될 수 있습니다.
+            </div>
+            <div class="comment-submit-btn-ar">
+                <span class="comment-submit-btn">
+                    댓글 작성
+                </span>
+            </div>
+        </div>
+
+        
+
+
+
+        <div class="comment-list-ar">
+
+            <div th:each="comment : ${commentList}" style="width: 100%;">
+                <div class="comment-info">
+                    <div class="comment-i-l"><span>[[${comment.createAt}]]&nbsp;&nbsp;|&nbsp;&nbsp;[[${comment.memberName}]]</span></div>
+                    <div class="comment-i-r" th:if="${comment.memberCode == memberCode}"  th:id="${comment.commentSeq + '-i-r'}">
+                        <span class="comment-edit" th:data-commentseq="${comment.commentSeq}">수정</span>
+                        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                        <span class="comment-delete" th:data-commentseq="${comment.commentSeq}">삭제</span>
+                    </div>
+                </div>
+                <textarea class="comment-ele" placeholder="댓글" wrap="hard" readonly th:text="${comment.content}" th:id="${comment.commentSeq}"></textarea>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <script th:src="@{/js/view/boardDetail.js}"></script>
+</div>
+
+</html>

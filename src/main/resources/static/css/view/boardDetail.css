@@ -1,0 +1,454 @@
+
+.board-form-ar{
+    width: 60%;
+    min-height: 1300px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+@media (hover: hover) {
+    .board-form-ar {
+        min-height: 500px !important;
+    }
+}
+
+
+.board-top-ar{
+    width: 100%;
+    height: 60px;
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+@media (hover: hover) {
+    .b-t-type{
+        font-size: 25px !important;
+    }
+}
+
+.b-t-type{
+    width: 19%;
+    height: 100%;
+
+    border-radius: 8px;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    border: 1px solid #CED4DA;
+
+    background-color: #F6F6F6;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 17px;
+
+    color: #333B3D;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.b-t-title{
+
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    font-size: 17px;
+
+    color: #333B3D;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    width: 78%;
+    height: 100%;
+
+    margin-left: 3%;
+
+    border-radius: 8px;
+
+    border: 1px solid #CED4DA;
+
+    background-color: #F6F6F6;
+
+    word-wrap: break-word; /* 긴 단어를 줄바꿈 */
+    word-break: break-word; /* 긴 단어를 줄바꿈 (유사 효과) */
+    white-space: normal;
+}
+
+.b-sub{
+
+    all: unset;
+
+    padding: 13px;
+
+    font-size: 15px;
+
+    color: #333B3D;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+
+    width: calc(100% - 26px);
+    height: 424px;
+
+    margin-top: 17px;
+
+    border-radius: 8px;
+
+    border: 1px solid #CED4DA;
+
+    background-color: #F6F6F6;
+}
+
+.b-submit-btn{
+
+    width: 100%;
+    height: 57px;
+
+    font-size: 20px;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+
+    color: #FFFFFF;
+
+    margin-top: 17px;
+
+    border-radius: 8px;
+
+    border: 1px solid #CED4DA;
+
+    background-color: #00C471;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+@media (hover:hover){
+    .b-submit-btn:hover{
+        cursor: pointer;
+        box-shadow: 0 2px 9px rgba(10, 10, 10, 0.3);
+    }
+}
+
+.comment-ar{
+    width: 60%;
+
+    padding-top: 15px;
+    padding-bottom: 5px;
+
+}
+
+.comment-form{
+
+    all: unset;
+
+    padding: 13px;
+
+    font-size: 15px;
+
+    color: #333B3D;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    width: calc(100% - 26px);
+    height: 90px;
+
+    margin-top: 17px;
+
+    border-radius: 8px;
+
+    border: 1px solid #CED4DA;
+
+    background-color: #FFFFFF;
+}
+
+.comment-sub{
+    width: calc(50% - 3px);
+    height: 100%;
+
+    padding-left: 3px;
+
+    font-size: 15px;
+
+    color: #8C939E;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    display: flex;
+
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.comment-submit-btn-ar{
+    width: calc(50% - 3px);
+    height: 100%;
+
+    padding-right: 3px;
+
+    display: flex;
+
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.comment-submit-btn{
+    font-size: 17px;
+
+    height: 170%;
+
+    color: #FFFFFF;
+
+    background-color: #333B3D;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 8px;
+
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+@media (hover: hover) {
+    .comment-submit-btn:hover{
+        font-weight: 600 !important;
+        cursor: pointer;
+        box-shadow: 0 2px 9px rgba(10, 10, 10, 0.3);
+    }
+}
+
+.comment-ar{
+
+    width: 100%;
+    height: 20px;
+
+    display: flex;
+    fle-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment-list-ar{
+    width: 100%;
+    height: auto;
+
+    border-top: 2px solid #333B3D;
+
+    margin-top: 17px;
+    padding-top: 17px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.comment-ele{
+    all: unset;
+
+    /*min-height: 70px;*/
+
+    padding: 13px;
+
+    font-size: 15px;
+
+    color: #333B3D;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    width: calc(100% - 26px);
+
+    margin-bottom: 13px;
+
+    border-radius: 8px;
+
+    border: 1px solid #CED4DA;
+
+    background-color: #F6F6F6;
+
+    white-space: pre-wrap; /* 줄바꿈을 위한 스타일 */
+    overflow-wrap: break-word;
+}
+
+.comment-info{
+    width: 100%;
+    height: 20px;
+
+    color: #8C939E;
+
+    font-size: 15px;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-bottom: 5px;
+}
+
+.comment-i-l{
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.comment-i-r{
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.comment-delete , .board-delete{
+    color: #cf9393 !important;
+
+    font-size: 15px;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.comment-edit , .board-edit{
+    color: #939ccf !important;
+
+    font-size: 15px;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.comment-edit-submit{
+    color: #0078C4 !important;
+
+}
+
+@media (hover: hover) {
+
+    .comment-edit:hover , .comment-delete:hover , .board-delete:hover , .board-edit:hover , .comment-edit-submit:hover{
+        cursor: pointer;
+    }
+
+}
+
+.middle-ar{
+
+    width: 100%;
+    height: 20px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.m-left{
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+.m-right{
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-display: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.detail-info{
+    color: #8C939E;
+
+    font-size: 15px;
+
+    font-family: "Noto Sans KR", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+

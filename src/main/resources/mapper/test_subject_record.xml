@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spocbt.spocbt.mapper.TestSubjectRecordMapper">
+
+    <insert id="save" parameterType="TestSubjectRecord" useGeneratedKeys="true" keyProperty="testSubjectCode">
+        INSERT INTO test_subject_record (test_code , subject_code , subject_score , is_passed , year , type , test_detail)
+        VALUES (#{testCode} , #{subjectCode} , #{subjectScore} , #{isPassed} , #{year} , #{type} , #{testDetail});
+    </insert>
+
+    <select id="findByTestCode" parameterType="int" resultType="TestSubjectRecord">
+        SELECT * FROM test_subject_record WHERE test_code = #{testCode};
+    </select>
+
+</mapper>

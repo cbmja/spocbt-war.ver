@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spocbt.spocbt.mapper.TestRecordMapper">
+
+    <insert id="save" parameterType="TestRecord" useGeneratedKeys="true" keyProperty="testCode">
+        INSERT INTO test_record (exam_code , member_code , year , type , test_score , is_passed)
+        VALUES (#{examCode} , #{memberCode} , #{year} , #{type} , #{testScore} , #{isPassed});
+    </insert>
+
+    <select id="findByMemberCode" parameterType="String" resultType="TestRecord">
+        SELECT * FROM test_record WHERE  member_code = #{memberCode} ORDER BY test_at DESC;
+    </select>
+
+</mapper>

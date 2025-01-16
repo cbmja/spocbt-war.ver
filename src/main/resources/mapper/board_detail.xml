@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spocbt.spocbt.mapper.BoardDetailMapper">
+
+    <insert id="create" parameterType="BoardDetail">
+        INSERT INTO board_detail (title , view_cnt , member_code , board_type , content , member_name)
+        VALUES (#{title} , #{viewCnt} , #{memberCode} , #{boardType} , #{content} , #{memberName});
+    </insert>
+
+    <select id="findByTitle" parameterType="String" resultType="BoardDetail">
+        SELECT * FROM board_detail WHERE title = #{title};
+    </select>
+
+    <select id="getTotal" parameterType="BoardDetail" resultType="int">
+        SELECT count(*)
+        FROM board_detail
+        WHERE board_type = #{boardType}
+        AND ${searchType} LIKE CONCAT('%', #{search}, '%');
+    </select>
+
+    <select id="getList" parameterType="BoardDetail" resultType="BoardDetail">
+        SELECT *
+        FROM board_detail
+        WHERE board_type = #{boardType}
+        AND ${searchType} LIKE CONCAT('%', #{search}, '%')
+        order by create_at ${sort}
+        LIMIT #{startNum}, #{pageElement};
+
+    </select>
+
+    <select id="getDetail" parameterType="int" resultType="BoardDetail">
+        SELECT *
+        FROM board_detail
+        WHERE board_seq = #{boardSeq};
+    </select>
+
+    <delete id="deleteBoard" parameterType="int">
+        DELETE FROM board_detail WHERE board_seq = #{boardSeq};
+    </delete>
+
+    <update id="updateBoard" parameterType="BoardDetail">
+        UPDATE board_detail
+        SET title = #{title},
+        content = #{content},
+        update_at = NOW()
+        WHERE board_seq = #{boardSeq};
+    </update>
+
+</mapper>

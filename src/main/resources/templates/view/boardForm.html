@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+
+
+<div layout:fragment="content">
+    <link rel="stylesheet" th:href="@{/css/view/boardForm.css}">
+<div class="board-form-ar">
+
+    <div class="board-top-ar">
+        <div class="b-t-type" th:text="${typeTitle}">
+        </div>
+
+        <textarea name="title" id="title" th:if="${edit != '1'}" placeholder="제목" class="b-t-title"></textarea><!--32글자 max-->
+        <textarea name="title" id="title" th:if="${edit == '1'}" class="b-t-title">[[${board.title}]]</textarea>
+    </div>
+
+    <input type="hidden" id="memberCode" th:value="${memberCode}">
+
+    <textarea class="b-sub" id="content" th:if="${edit != '1'}" wrap="hard">
+    :::::::: 예시 ::::::::
+    제목 예시 1 : 2019년도 2급 생활스포츠지도사 A형 스포츠사회학 18번 문제 질문
+    제목 예시 2 : 운동생리학 심박수 질문
+    처럼 제목에 질문하고자 하는 바를 적어주시면 빠른 답변을 받을 수 있습니다.
+    </textarea>
+
+    <textarea class="b-sub" id="content" th:if="${edit == '1'}" wrap="hard">[[${board.content}]]</textarea>
+
+    <div class="b-submit-btn" th:data-boardtype="${type}" th:if="${edit != '1'}">게시물 저장</div>
+    <div class="b-edit-btn" th:data-boardtype="${type}" th:if="${edit == '1'}" th:data-boardseq="${board.boardSeq}">게시물 수정</div>
+
+
+</div>
+
+
+
+
+        <script th:src="@{/js/view/boardForm.js}"></script>
+</div>
+
+</html>
