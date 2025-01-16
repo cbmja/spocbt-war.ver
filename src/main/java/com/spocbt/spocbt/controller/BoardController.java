@@ -59,7 +59,7 @@ public class BoardController {
 
         }catch (Exception e){
             e.printStackTrace();
-
+            logger.error("endpoint---------------------------/border/list",e);
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
             model.addAttribute("selectedNav" , "board");
@@ -94,7 +94,7 @@ public class BoardController {
             return "view/boardForm";
         }catch (Exception e){
             e.printStackTrace();
-
+            logger.error("endpoint---------------------------/border/form",e);
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
             model.addAttribute("selectedNav" , "board");
@@ -115,6 +115,7 @@ public class BoardController {
             res = boardService.create(form);
         }catch (Exception e){
             e.printStackTrace();
+            logger.error("endpoint---------------------------/border/submit",e);
             return "err";
         }
 
@@ -174,6 +175,7 @@ public class BoardController {
             res = boardService.deleteBoard(form.getBoardSeq() , memberCode);
         }catch (Exception e){
             e.printStackTrace();
+            logger.error("endpoint---------------------------/border/delete",e);
             res = "err";
         }
 
@@ -213,7 +215,7 @@ public class BoardController {
             return "view/boardForm";
         }catch (Exception e){
             e.printStackTrace();
-
+            logger.error("endpoint---------------------------/border/edit",e);
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
             model.addAttribute("selectedNav" , "board");
@@ -280,7 +282,7 @@ public class BoardController {
             return r;
         }catch (Exception e){
             e.printStackTrace();
-
+            logger.error("endpoint---------------------------/board/comment/submit",e);
             r.put("response" , "err");
             r.put("appendStr" , "");
 
@@ -302,6 +304,7 @@ public class BoardController {
             res = boardService.editComment(form , memberCode);
         }catch (Exception e){
             e.printStackTrace();
+            logger.error("endpoint---------------------------/board/comment/edit",e);
             res = "err";
 
         }
@@ -359,6 +362,7 @@ public class BoardController {
             return r;
         }catch (Exception e){
             e.printStackTrace();
+            logger.error("endpoint---------------------------/board/comment/delete",e);
             r.put("response" , "err");
             r.put("appendStr" , "");
 

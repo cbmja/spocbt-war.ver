@@ -11,6 +11,8 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,7 @@ public class MemberController {
 
     private final MemberService memberService;
     private final LoginUtil loginUtil;
+    private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
 
     @Value("${kakao.restApiKey}")
@@ -90,7 +93,7 @@ public class MemberController {
 
         }catch (Exception e){
             e.printStackTrace();
-
+            logger.error("endpoint---------------------------/member/history",e);
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
             model.addAttribute("selectedNav" , "mypage");
@@ -134,7 +137,7 @@ public class MemberController {
 
         }catch (Exception e){
             e.printStackTrace();
-
+            logger.error("endpoint---------------------------/member/myBoard",e);
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
             model.addAttribute("selectedNav" , "mypage");
@@ -220,7 +223,7 @@ public class MemberController {
             }
         }catch (Exception e){
             e.printStackTrace();
-
+            logger.error("endpoint---------------------------/member/kakao/callback",e);
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
             model.addAttribute("selectedNav" , "mypage");
@@ -265,7 +268,7 @@ public class MemberController {
             }
         }catch (Exception e){
             e.printStackTrace();
-
+            logger.error("endpoint---------------------------/member/naver/callback",e);
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
             model.addAttribute("selectedNav" , "mypage");
@@ -288,6 +291,7 @@ public class MemberController {
             }
         }catch (Exception e){
             e.printStackTrace();
+            logger.error("endpoint---------------------------/member/join",e);
             return "err";
         }
     }
@@ -306,6 +310,7 @@ public class MemberController {
             }
         }catch (Exception e){
             e.printStackTrace();
+            logger.error("endpoint---------------------------/member/check",e);
             return "err";
         }
 

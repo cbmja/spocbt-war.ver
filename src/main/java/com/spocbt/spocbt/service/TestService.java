@@ -7,6 +7,8 @@ import com.spocbt.spocbt.controller.Score;
 import com.spocbt.spocbt.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
 public class TestService {
 
     private final SqlSessionTemplate sql;
+    private static final Logger logger = LoggerFactory.getLogger(TestService.class);
 
 
     // 24-12-29 : ok--1
@@ -64,6 +67,7 @@ public class TestService {
             // throw new Exception();
         }catch (Exception e){
             e.printStackTrace();
+            logger.error("method---------------------------TestService.findUExam",e);
             updateExam = new UpdateExam();
             updateExam.setErr("err");
         }

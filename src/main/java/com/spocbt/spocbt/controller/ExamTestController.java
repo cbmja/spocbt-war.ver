@@ -7,6 +7,8 @@ import com.spocbt.spocbt.dto.UpdateExam;
 import com.spocbt.spocbt.service.TestService;
 import jakarta.servlet.ServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +23,7 @@ import java.util.stream.Collectors;
 public class ExamTestController {
 
     private final TestService testService;
+    private static final Logger logger = LoggerFactory.getLogger(ExamTestController.class);
 
     // 24-12-29 : ok--1
     // 24-01-03 : ok--2
@@ -37,6 +40,7 @@ public class ExamTestController {
 
         }catch (Exception e){
             e.printStackTrace();
+            logger.error("endpoint---------------------------/exam/list",e);
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
             return "util/prepare";
@@ -146,6 +150,7 @@ public class ExamTestController {
 
         }catch (Exception e){
             e.printStackTrace();
+            logger.error("endpoint---------------------------/exam/test",e);
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
             model.addAttribute("selectedNav" , "test");
@@ -219,6 +224,7 @@ public class ExamTestController {
             score = testService.getScore(examCode,type,year,eleList,reqList,myAnswerList , memberCode);
         }catch (Exception e){
             e.printStackTrace();
+            logger.error("endpoint---------------------------/exam/submit",e);
             List<Score> errs = new ArrayList<>();
             Score s = new Score();
             s.setErr("err");
@@ -248,6 +254,7 @@ public class ExamTestController {
             testSubjectRecords = testService.getTestDetails(testCode);
         }catch (Exception e){
             e.printStackTrace();
+            logger.error("endpoint---------------------------/exam/test/detail",e);
             testSubjectRecords = new HashMap<>();
             List<Score> t = new ArrayList<>();
             t.add(new Score());

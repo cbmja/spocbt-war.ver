@@ -7,6 +7,8 @@ import com.spocbt.spocbt.dto.Comment;
 import com.spocbt.spocbt.dto.Member;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,6 +22,7 @@ import java.util.Map;
 public class BoardService {
 
     private final SqlSessionTemplate sql;
+    private static final Logger logger = LoggerFactory.getLogger(BoardService.class);
 
     @Transactional
     public String editComment(Comment form , String memberCode){
@@ -67,6 +70,7 @@ public class BoardService {
             res = sql.update("com.spocbt.spocbt.mapper.BoardDetailMapper.updateBoard" , form);
         }catch (Exception e){
             e.printStackTrace();
+            logger.error("method---------------------------BoardService.editBoard",e);
             r = "err";
         }
 

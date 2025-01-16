@@ -11,6 +11,8 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +29,7 @@ public class MemberService {
 
     private final SqlSessionTemplate sql;
     private final LoginUtil loginUtil;
+    private static final Logger logger = LoggerFactory.getLogger(MemberService.class);
     @Value("${hash.default_secret}")
     private String default_secret;
 

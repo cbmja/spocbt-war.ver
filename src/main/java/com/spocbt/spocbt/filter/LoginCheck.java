@@ -11,6 +11,8 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -21,6 +23,7 @@ public class LoginCheck  implements Filter {
 
     private final LoginUtil loginUtil;
     private final MemberService memberService;
+    private static final Logger logger = LoggerFactory.getLogger(LoginCheck.class);
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException {
@@ -28,6 +31,7 @@ public class LoginCheck  implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
 
         String reqUri = req.getRequestURI();
+        logger.error("req uri---------------------------"+reqUri);
         // /exam/test , /exam/submit , /member/history
         try{
 
@@ -57,7 +61,7 @@ public class LoginCheck  implements Filter {
                         return;
                     }else{ // 정상 로그인일 경우 --------------------------------------------------------------------------
                         request.setAttribute("memberCode" , mc);
-
+                        logger.error("memberCode---------------------------"+mc);
                         chain.doFilter(request, response);
                         return;
                     }
@@ -89,6 +93,7 @@ public class LoginCheck  implements Filter {
 
         }catch(Exception e){
             e.printStackTrace();
+            logger.error("endpoint---------------------------LoginCheck",e);
             httpResponse.sendRedirect("/exam/list");
             return;
         }
