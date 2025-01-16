@@ -83,6 +83,8 @@ public class ExamTestController {
         if(list.isEmpty()){
             model.addAttribute("isErr" , "0");
             model.addAttribute("examTitle" , ((Exam)res.get("exam")).getExamTitle());
+            model.addAttribute("selectedNav" , "test");
+            model.addAttribute("navText" , "server error");
             return "util/prepare";
         }
 
@@ -103,10 +105,14 @@ public class ExamTestController {
         if(year.isEmpty() || type.isEmpty() || examCode.isEmpty()){
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.(시험 정보 누락)");
+            model.addAttribute("selectedNav" , "test");
+            model.addAttribute("navText" , "server error");
             return "util/prepare";
         }else if(eleSubs.isEmpty() && reqSubs.isEmpty()){
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.(응시과목 정보 누락)");
+            model.addAttribute("selectedNav" , "test");
+            model.addAttribute("navText" , "server error");
             return "util/prepare";
         }
 
@@ -121,12 +127,16 @@ public class ExamTestController {
             // 서버 에러일 경우 -------------------------------------------------------------------------------------------
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+            model.addAttribute("selectedNav" , "test");
+            model.addAttribute("navText" , "server error");
             return "util/prepare";
         } else if (updateExam.getErr().equals("noType")) {
             // 해당 타입이 업로드 전일 경우 --------------------------------------------------------------------------------
             model.addAttribute("isErr" , "1");
             String t = type.equals("A")?"B":"A";
             model.addAttribute("examTitle" , "[ "+type+" ]타입은 준비중입니다. [ "+t+" ]타입을 선택해주세요.");
+            model.addAttribute("selectedNav" , "test");
+            model.addAttribute("navText" , "server error");
             return "util/prepare";
         }
 
@@ -138,6 +148,8 @@ public class ExamTestController {
             e.printStackTrace();
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+            model.addAttribute("selectedNav" , "test");
+            model.addAttribute("navText" , "server error");
             return "util/prepare";
         }
 
@@ -150,7 +162,8 @@ public class ExamTestController {
         model.addAttribute("type",type); //
         model.addAttribute("exam",(Exam)testData.get("exam"));
         model.addAttribute("memberCode" , (String)request.getAttribute("memberCode"));
-
+        model.addAttribute("selectedNav" , "test");
+        model.addAttribute("navText" , "모의 시험 응시");
         return "view/exam/"+updateExam.getFileName();
     }
 

@@ -49,8 +49,9 @@ public class BoardController {
             model.addAttribute("searchType" , searchType);
             model.addAttribute("sort" , sort);
             model.addAttribute("selectedNav" , "board");
-            model.addAttribute("isLogin" , (String)request.getAttribute("isLogin"));
             model.addAttribute("navText" , "체육인들의 커뮤니티");
+            model.addAttribute("isLogin" , (String)request.getAttribute("isLogin"));
+
             return "view/boardList";
 
         }catch (Exception e){
@@ -58,6 +59,8 @@ public class BoardController {
 
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+            model.addAttribute("selectedNav" , "board");
+            model.addAttribute("navText" , "server error");
             return "util/prepare";
         }
 
@@ -91,6 +94,8 @@ public class BoardController {
 
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+            model.addAttribute("selectedNav" , "board");
+            model.addAttribute("navText" , "server error");
             return "util/prepare";
         }
 
@@ -138,6 +143,7 @@ public class BoardController {
             model.addAttribute("commentList" , comments);
             model.addAttribute("detail" , detail);
             model.addAttribute("type" , boardTitle);
+            model.addAttribute("selectedNav" , "board");
             model.addAttribute("navText" , "[ "+boardTitle+" ]");
             return "view/boardDetail";
         }catch (Exception e){
@@ -145,6 +151,8 @@ public class BoardController {
 
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+            model.addAttribute("selectedNav" , "board");
+            model.addAttribute("navText" , "server error");
             return "util/prepare";
         }
 
@@ -205,6 +213,8 @@ public class BoardController {
 
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+            model.addAttribute("selectedNav" , "board");
+            model.addAttribute("navText" , "server error");
             return "util/prepare";
         }
 

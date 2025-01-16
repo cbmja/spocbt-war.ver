@@ -93,6 +93,8 @@ public class MemberController {
 
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+            model.addAttribute("selectedNav" , "mypage");
+            model.addAttribute("navText" , "server error");
             return "util/prepare";
         }
 
@@ -135,6 +137,8 @@ public class MemberController {
 
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+            model.addAttribute("selectedNav" , "mypage");
+            model.addAttribute("navText" , "server error");
             return "util/prepare";
         }
 
@@ -219,6 +223,8 @@ public class MemberController {
 
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+            model.addAttribute("selectedNav" , "mypage");
+            model.addAttribute("navText" , "server error");
             return "util/prepare";
         }
 
@@ -262,6 +268,8 @@ public class MemberController {
 
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+            model.addAttribute("selectedNav" , "mypage");
+            model.addAttribute("navText" , "server error");
             return "util/prepare";
         }
 
