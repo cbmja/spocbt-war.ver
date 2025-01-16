@@ -32,10 +32,19 @@ logging:
     #org.mybatis: DEBUG
     #org.mybatis.spring: DEBUG
     #org.mybatis.spring.SqlSessionUtils: WARN
-    jdbc.sqlonly: DEBUG
-    org.apache.ibatis: DEBUG
-    org.mybatis: DEBUG
-    java.sql: DEBUG
+    jdbc.sqlonly: ERROR
+    org.apache.ibatis: ERROR
+    org.mybatis: ERROR
+    java.sql: ERROR
+    root: ERROR # 전체 애플리케이션의 기본 로그 레벨을 ERROR로 설정
+    org.springframework: ERROR # Spring Framework의 ERROR 로그만 출력
+    com.spocbt: ERROR # 애플리케이션 패키지에서 ERROR 로그만 출력
+    org.hibernate: ERROR # Hibernate 관련 ERROR 로그만 출력
+  file:
+    name: app-error.log # 에러 로그 파일 이름
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" # 콘솔 출력 패턴
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n" # 파일 출력 패턴
 
 hash:
   access_secret: adsfagsdreaasdvcaasdftgsdaasdfgas
