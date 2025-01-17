@@ -31,8 +31,7 @@ public class LoginCheck  implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
 
         String reqUri = req.getRequestURI();
-        logger.error("req uri---------------------------"+reqUri);
-        // /exam/test , /exam/submit , /member/history
+        logger.info("req uri---------------------------"+reqUri);
         try{
 
             Cookie[] cookies = req.getCookies();
@@ -61,7 +60,7 @@ public class LoginCheck  implements Filter {
                         return;
                     }else{ // 정상 로그인일 경우 --------------------------------------------------------------------------
                         request.setAttribute("memberCode" , mc);
-                        logger.error("memberCode---------------------------"+mc);
+                        logger.info("memberCode---------------------------"+mc);
                         chain.doFilter(request, response);
                         return;
                     }
