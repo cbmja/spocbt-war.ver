@@ -56,21 +56,13 @@ public class TestService {
     // 24-01-03 : ok--2
     public UpdateExam findUExam(UpdateExam exam){
 
-        UpdateExam updateExam;
-        try {
-            updateExam = sql.selectOne("com.spocbt.spocbt.mapper.UpdateExamMapper.findUpdateExam",exam);
+        UpdateExam updateExam = sql.selectOne("com.spocbt.spocbt.mapper.UpdateExamMapper.findUpdateExam",exam);
 
-            if(updateExam == null){
-                updateExam = new UpdateExam();
-                updateExam.setErr("noType");
-            }
-            // throw new Exception();
-        }catch (Exception e){
-            e.printStackTrace();
-            logger.error("method---------------------------TestService.findUExam",e);
+        if(updateExam == null){
             updateExam = new UpdateExam();
-            updateExam.setErr("err");
+            updateExam.setErr("noType");
         }
+
         return updateExam;
 
     }
@@ -237,6 +229,7 @@ public class TestService {
         boolean passed = isPassed && total >= passedScore;
         testRecord.setPassed(passed);
         sql.insert("com.spocbt.spocbt.mapper.TestRecordMapper.save",testRecord);
+        logger.info("---------------------------save test record : "+testRecord.toString());
 
         // tsl -> 시험 상세 응시정보 list
         // tsl -> 시험 상세 응시정보 list
@@ -273,7 +266,7 @@ public class TestService {
             tsr.setType(type);
             tsr.setTestDetail(testDetailInfo.get(score.getSubCode()));
             sql.insert("com.spocbt.spocbt.mapper.TestSubjectRecordMapper.save",tsr);
-
+            //logger.info("---------------------------save test subject record : "+tsr.toString()); // 로그파일 용량부족할듯
         }
 
         Map<String , List<Score>> lr = new HashMap<>();
