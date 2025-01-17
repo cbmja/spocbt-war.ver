@@ -49,20 +49,30 @@ public class MemberController {
     // 로그아웃
     @GetMapping("/logout")
     public String logout(HttpServletResponse response,Model model){
-        Cookie cookie = new Cookie("idCookie", null);
+        try{
+            Cookie cookie = new Cookie("idCookie", null);
 
-        // 경로 설정 (원래 쿠키 경로와 동일해야 함)
-        cookie.setPath("/"); // 필요에 따라 경로를 지정
+            // 경로 설정 (원래 쿠키 경로와 동일해야 함)
+            cookie.setPath("/"); // 필요에 따라 경로를 지정
 
-        // 만료 시간을 0으로 설정 (즉시 삭제)
-        cookie.setMaxAge(0);
+            // 만료 시간을 0으로 설정 (즉시 삭제)
+            cookie.setMaxAge(0);
 
-        // 응답에 추가
-        response.addCookie(cookie);
+            // 응답에 추가
+            response.addCookie(cookie);
 
-        model.addAttribute("isLogin" , "0");
+            model.addAttribute("isLogin" , "0");
 
-        return "redirect:/exam/list";
+            return "redirect:/exam/list";
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("endpoint---------------------------/member/logout",e);
+            model.addAttribute("isErr" , "1");
+            model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+            model.addAttribute("navText" , "server error");
+            return "util/prepare";
+        }
+
     }
 
     // 24-01-03 : ok--1
@@ -202,9 +212,12 @@ public class MemberController {
 
             LoginDto callback = loginUtil.getKakaoToken(code);
 
-            if(callback == null || !"success".equals(loginUtil.verifyToken(callback.getIdToken() , callback))){
+            if(!"success".equals(loginUtil.verifyToken(callback.getIdToken() , callback))){
+                logger.error("endpoint---------------------------/member/kakao/callback: idToken verify failure");
                 model.addAttribute("isErr" , "1");
                 model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+                model.addAttribute("selectedNav" , "mypage");
+                model.addAttribute("navText" , "server error");
                 return "util/prepare";
             }
 
@@ -233,7 +246,6 @@ public class MemberController {
 
     }
 
-
     // 25-01-14 - 1차 ok
     // 콜백
     @GetMapping("/naver/callback")
@@ -247,9 +259,12 @@ public class MemberController {
 
             LoginDto callback = loginUtil.getNaverToken(code);
             String res = loginUtil.getNaverProfile(callback.getAccessToken());
-            if(callback == null || "err".equals(res)){
+            if("err".equals(res)){
+                logger.error("endpoint---------------------------/member/naver/callback: get member profile failure");
                 model.addAttribute("isErr" , "1");
                 model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+                model.addAttribute("selectedNav" , "mypage");
+                model.addAttribute("navText" , "server error");
                 return "util/prepare";
             }
 
@@ -277,6 +292,7 @@ public class MemberController {
         }
 
     }
+
     // 25-01-14 - 1차 ok
     // 회원가입
     @PostMapping("/join")

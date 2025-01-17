@@ -50,7 +50,7 @@ public class LoginUtil {
     private String naver_redirectUri;
 
     public LoginDto getKakaoToken(String code){
-        try{
+
         // token 요청 url
         String kakaoTokenUrl = "https://kauth.kakao.com/oauth/token";
         RestTemplate restTemplate = new RestTemplate();
@@ -89,15 +89,9 @@ public class LoginUtil {
 
             return dto;
 
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
-
     }
 
     public LoginDto getNaverToken(String code){
-        try{
             // token 요청 url
             String kakaoTokenUrl = "https://nid.naver.com/oauth2.0/token";
             RestTemplate restTemplate = new RestTemplate();
@@ -137,15 +131,10 @@ public class LoginUtil {
 
             return dto;
 
-        }catch (Exception e){
-            e.printStackTrace();
-            return null;
-        }
 
     }
 
     public String getNaverProfile(String accessToken){
-        try{
             // token 요청 url
             String kakaoTokenUrl = "https://openapi.naver.com/v1/nid/me";
             RestTemplate restTemplate = new RestTemplate();
@@ -168,8 +157,6 @@ public class LoginUtil {
                     String.class
             );
 
-
-
             // 응답 수집
             JSONObject jsonResponse = new JSONObject(response.getBody());
 
@@ -178,14 +165,6 @@ public class LoginUtil {
             }else {
                 return jsonResponse.getJSONObject("response").getString("id");
             }
-
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-            return "err";
-        }
-
     }
 
 

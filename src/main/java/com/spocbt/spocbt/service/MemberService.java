@@ -110,7 +110,8 @@ public class MemberService {
                 return "err";
             }
 
-
+            logger.info("---------------------------join : "+memberCode);
+            logger.info(form.toString());
             // 로그인
             String ecCookie = loginUtil.encrypt(memberCode);
             Cookie idCookie = new Cookie("idCookie", ecCookie);
@@ -121,7 +122,7 @@ public class MemberService {
             idCookie.setMaxAge(30 * 60 * 60);
 
             response.addCookie(idCookie);
-
+            logger.info("---------------------------login : "+memberCode);
             return "join";
 
         }
@@ -143,7 +144,7 @@ public class MemberService {
         idCookie.setMaxAge(30 * 60 * 60);
 
         response.addCookie(idCookie);
-
+        logger.info("---------------------------login : "+memberCode);
         return "login";
     }
 
