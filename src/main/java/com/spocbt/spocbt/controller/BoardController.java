@@ -59,7 +59,7 @@ public class BoardController {
 
         }catch (Exception e){
             e.printStackTrace();
-            logger.error("endpoint---------------------------/border/list",e);
+            logger.error("endpoint---------------------------/board/list",e);
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
             model.addAttribute("selectedNav" , "board");
@@ -94,7 +94,7 @@ public class BoardController {
             return "view/boardForm";
         }catch (Exception e){
             e.printStackTrace();
-            logger.error("endpoint---------------------------/border/form",e);
+            logger.error("endpoint---------------------------/board/form",e);
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
             model.addAttribute("selectedNav" , "board");
@@ -115,7 +115,7 @@ public class BoardController {
             res = boardService.create(form);
         }catch (Exception e){
             e.printStackTrace();
-            logger.error("endpoint---------------------------/border/submit",e);
+            logger.error("endpoint---------------------------/board/submit",e);
             return "err";
         }
 
@@ -152,7 +152,7 @@ public class BoardController {
             return "view/boardDetail";
         }catch (Exception e){
             e.printStackTrace();
-            logger.error("endpoint---------------------------/border/detail",e);
+            logger.error("endpoint---------------------------/board/detail",e);
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
             model.addAttribute("selectedNav" , "board");
@@ -168,18 +168,15 @@ public class BoardController {
     @ResponseBody
     public String boardDelete(Model model, ServletRequest request, @RequestBody BoardDetail form){
 
-
-        String res = "";
         try{
             String memberCode = (String)request.getAttribute("memberCode");
-            res = boardService.deleteBoard(form.getBoardSeq() , memberCode);
+            return boardService.deleteBoard(form.getBoardSeq() , memberCode);
         }catch (Exception e){
             e.printStackTrace();
-            logger.error("endpoint---------------------------/border/delete",e);
-            res = "err";
+            logger.error("endpoint---------------------------/board/delete",e);
+            return "err";
         }
 
-        return res;
     }
 
     // 25-01-14 - 1차 ok
@@ -215,7 +212,7 @@ public class BoardController {
             return "view/boardForm";
         }catch (Exception e){
             e.printStackTrace();
-            logger.error("endpoint---------------------------/border/edit",e);
+            logger.error("endpoint---------------------------/board/edit",e);
             model.addAttribute("isErr" , "1");
             model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
             model.addAttribute("selectedNav" , "board");
@@ -297,19 +294,15 @@ public class BoardController {
     @ResponseBody
     public String commentEdit(Model model, ServletRequest request, @RequestBody Comment form){
 
-        String res = "";
-
         try {
             String memberCode = (String)request.getAttribute("memberCode");
-            res = boardService.editComment(form , memberCode);
+            return boardService.editComment(form , memberCode);
         }catch (Exception e){
             e.printStackTrace();
             logger.error("endpoint---------------------------/board/comment/edit",e);
-            res = "err";
-
+            return "err";
         }
 
-        return res;
     }
 
     // 25-01-14 - 1차 ok
