@@ -2,6 +2,7 @@ package com.spocbt.spocbt.filter;
 
 
 import com.spocbt.spocbt.service.MemberService;
+import com.spocbt.spocbt.util.JvmCheck;
 import com.spocbt.spocbt.util.LoginUtil;
 import jakarta.servlet.Filter;
 import jakarta.servlet.FilterChain;
@@ -13,6 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -23,7 +25,10 @@ public class LoginCheck  implements Filter {
 
     private final LoginUtil loginUtil;
     private final MemberService memberService;
-    private static final Logger logger = LoggerFactory.getLogger(LoginCheck.class);
+
+    private final JvmCheck jvmCheck;
+    private final Logger logger = LoggerFactory.getLogger(LoginCheck.class);
+    private final ApplicationContext applicationContext;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException {
@@ -35,6 +40,8 @@ public class LoginCheck  implements Filter {
 
 
         try{
+
+            jvmCheck.check(applicationContext);
 
             Cookie[] cookies = req.getCookies();
             String idCookie = "";
