@@ -41,7 +41,7 @@ public class LoginCheck  implements Filter {
 
         try{
 
-            jvmCheck.check(applicationContext);
+            jvmCheck.check(applicationContext , reqUri);
 
             Cookie[] cookies = req.getCookies();
             String idCookie = "";
@@ -59,9 +59,7 @@ public class LoginCheck  implements Filter {
             if(reqUri.contains("/exam/test") || reqUri.contains("/member/history") || reqUri.contains("/board/form") || reqUri.contains("/board/comment/submit")
                     || reqUri.contains("/board/detail") || reqUri.contains("/board/comment/delete") || reqUri.contains("board/delete")
                     || reqUri.contains("/board/edit") || reqUri.contains("/board/comment/edit") || reqUri.contains("/member/myBoard")){
-                if (!reqUri.endsWith(".js") && !reqUri.endsWith(".css")) {
-                    logger.info("Request URI: {}", reqUri);
-                }
+
                 // 로그인 필요
                 if(!idCookie.isBlank()){
                     String memberCode = loginUtil.decrypt(idCookie);

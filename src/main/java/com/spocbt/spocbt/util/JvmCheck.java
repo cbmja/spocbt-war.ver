@@ -17,10 +17,13 @@ public class JvmCheck {
     private static final Logger logger = LoggerFactory.getLogger(JvmCheck.class);
 
 
-    public void check(ApplicationContext applicationContext){
+    public void check(ApplicationContext applicationContext , String uri){
 
         ////////////////////////////////////////// jvm 메모리 체크용 코드 ////////////////////////////////////////////////////
         logger.error("---------------------------------------- jvm check ----------------------------------------");
+        if (!uri.endsWith(".js") && !uri.endsWith(".css")) {
+            logger.info("Request URI: {}", uri);
+        }
         for (MemoryPoolMXBean memoryPoolMXBean : ManagementFactory.getMemoryPoolMXBeans()) {
             // Metaspace 영역인지 확인
             if ("Metaspace".equals(memoryPoolMXBean.getName())) {
