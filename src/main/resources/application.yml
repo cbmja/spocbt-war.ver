@@ -19,6 +19,12 @@ spring:
     username: spocbt
     password: spocbm007512!
     driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      max-lifetime: 600000
+      leak-detection-threshold: 3000
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml
@@ -39,6 +45,7 @@ logging:
     org.springframework: INFO # Spring Framework의 ERROR 로그만 출력
     com.spocbt: INFO # 애플리케이션 패키지에서 ERROR 로그만 출력
     org.hibernate: INFO # Hibernate 관련 ERROR 로그만 출력
+    org.mybatis.spring.SqlSessionTemplate: INFO
   file:
     name: C:\Users\jeon\Desktop\온라인 자격증 시험\app-logs.log # 에러 로그 파일 이름
 
