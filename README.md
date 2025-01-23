@@ -59,6 +59,8 @@ aspose 에서 제공하는 솔루션이 그중 제일 일관성 있게 변환이
 html 을 다루는 라이브러리를 서치하던 중 python의 BeautifulSoup 이라는 라이브러리가 있다는 것을 발견했습니다.
 python 은 아예 다를 줄 모르지만 chat gpt 를 활용하여 기본적인 코드를 제공받고, 이후에 기본적인 조건문과 반복문만 필요한 부분으로 수정하여 사용했습니다.
 
+```
+
 import os
 from bs4 import BeautifulSoup
 
@@ -131,10 +133,14 @@ def process_html_files(input_dir, output_dir):
     print(f"Summary file created at: {summary_path}")
 
 # 경로 설정
-input_dir = r"C:\Users\jeon\Desktop\data\html변환\4. hidden 제거 [ html ]"
-output_dir = r"C:\Users\jeon\Desktop\data\html변환\5. 보기 번호 data 부여 [ html ]"
+input_dir = r"C:\Users\jeon\Desktop\온라인 자격증 시험\html변환\4. hidden 제거 [ html ]"
+output_dir = r"C:\Users\jeon\Desktop\온라인 자격증 시험\html변환\5. 보기 번호 data 부여 [ html ]"
 
 process_html_files(input_dir, output_dir)
+
+
+```
+
 
 
 ![화면 캡처 2025-01-23 175213](https://github.com/user-attachments/assets/2ee6e0cd-49fb-4951-9622-7f075585e36c)
