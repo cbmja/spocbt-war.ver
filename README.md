@@ -1,5 +1,8 @@
 # 생활스포츠지도사 기출문제 온라인 풀이 사이트.
 <http://spocbt.cafe24.com/exam/list>
+우측 상단의 tester 로그인으로 간편하게 확인해 보실 수 있습니다.
+실제 로그인 회원가입도 가능
+
 
 ## 개발 계기
 
@@ -69,8 +72,28 @@ python 은 아예 다를 줄 모르지만 chat gpt 를 활용하여 기본적인
 
 ## 시연
 
+### 시험 목록
+![main](https://github.com/user-attachments/assets/1f3f2df1-2af8-4c8b-a0c9-61b4c8a60db4)
 
 
+### 시험 선택 후 응시 과목 선택 화면
+![exam_select](https://github.com/user-attachments/assets/75d5a1f4-4d92-4231-8cd8-debe7fe8645c)
+
+
+### 시험 응시 화면
+![test](https://github.com/user-attachments/assets/417eb289-9676-4017-9df5-254068789139)
+
+
+### 시험 제출 후 채점 화면
+![submit](https://github.com/user-attachments/assets/73077a56-aed1-4ead-afb3-5c22c265f158)
+
+
+### 마이페이지 시험 이력 조회
+![mypage](https://github.com/user-attachments/assets/90929a45-2368-4926-b16d-9e9e6ba3f292)
+
+
+### 마이페이지 시험 이력 상세
+![detail](https://github.com/user-attachments/assets/36e433ee-9311-47cd-bde1-3bfefca7be92)
 
 
 
