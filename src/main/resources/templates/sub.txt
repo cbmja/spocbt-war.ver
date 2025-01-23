@@ -24,7 +24,7 @@ spring:
       maximum-pool-size: 10
       idle-timeout: 30000
       max-lifetime: 600000
-      leak-detection-threshold: 3000
+      leak-detection-threshold: 6000
 
 mybatis:
   mapper-locations: classpath:mapper/*.xml

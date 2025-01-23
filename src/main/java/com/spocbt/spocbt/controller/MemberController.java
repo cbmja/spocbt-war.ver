@@ -333,4 +333,41 @@ public class MemberController {
     }
 
 
+    @GetMapping("/tester")
+    public String tester(Model model, HttpServletResponse response){
+
+        try{
+
+            Member member = new Member();
+            member.setMemberCode("tester");
+            member.setLoginType("kakao");
+            member.setLoginId("tester");
+            member.setEmail("tester@tester.com");
+            member.setJob("seeker");
+            member.setAge("100");
+            member.setName("tester");
+
+
+            if(memberService.loginMember("kakao","tester",response,"callback",new Member()).equals("login")){
+                return "redirect:/exam/list";
+            }else {
+                logger.error("endpoint---------------------------/member/tester : tester login failure");
+                model.addAttribute("isErr" , "1");
+                model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+                model.addAttribute("selectedNav" , "mypage");
+                model.addAttribute("navText" , "server error");
+                return "util/prepare";
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("endpoint---------------------------/member/tester : tester login failure");
+            model.addAttribute("isErr" , "1");
+            model.addAttribute("examTitle" , "서버 에러입니다. 다시 시도해주세요.");
+            model.addAttribute("selectedNav" , "mypage");
+            model.addAttribute("navText" , "server error");
+            return "util/prepare";
+        }
+
+    }
+
 }

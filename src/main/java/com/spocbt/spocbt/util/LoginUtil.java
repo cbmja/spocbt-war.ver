@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import java.io.InputStream;
 import java.math.BigInteger;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -49,11 +50,15 @@ public class LoginUtil {
     @Value("${naver.redirectUri}")
     private String naver_redirectUri;
 
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
+    private final RestTemplate restTemplate = new RestTemplate();
+
     public LoginDto getKakaoToken(String code){
 
         // token 요청 url
         String kakaoTokenUrl = "https://kauth.kakao.com/oauth/token";
-        RestTemplate restTemplate = new RestTemplate();
+
         HttpHeaders headers = new HttpHeaders();
 
         // 요청 헤더, 바디
@@ -94,7 +99,7 @@ public class LoginUtil {
     public LoginDto getNaverToken(String code){
             // token 요청 url
             String kakaoTokenUrl = "https://nid.naver.com/oauth2.0/token";
-            RestTemplate restTemplate = new RestTemplate();
+
             HttpHeaders headers = new HttpHeaders();
 
             // 요청 헤더, 바디
@@ -137,7 +142,7 @@ public class LoginUtil {
     public String getNaverProfile(String accessToken){
             // token 요청 url
             String kakaoTokenUrl = "https://openapi.naver.com/v1/nid/me";
-            RestTemplate restTemplate = new RestTemplate();
+
             HttpHeaders headers = new HttpHeaders();
 
             // 요청 헤더, 바디
@@ -175,8 +180,7 @@ public class LoginUtil {
             String headerJson = new String(Base64.getUrlDecoder().decode(parts[0]));
             String kid = "";
 
-            kid = new ObjectMapper().readTree(headerJson).get("kid").asText();
-
+            kid = objectMapper.readTree(headerJson).get("kid").asText();
             PublicKey publicKey = getPublicKey(kid);
 
             Claims claims = Jwts.parserBuilder()
@@ -202,25 +206,25 @@ public class LoginUtil {
 
     }
 
-    public static PublicKey getPublicKey(String kid) {
+    public PublicKey getPublicKey(String kid) {
         try {
             URL url = new URL("https://kauth.kakao.com/.well-known/jwks.json");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
 
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode jwks = mapper.readTree(conn.getInputStream()).get("keys");
+            try (InputStream inputStream = conn.getInputStream()) {
+                JsonNode jwks = objectMapper.readTree(inputStream).get("keys");
 
-            for (JsonNode key : jwks) {
-                if (key.get("kid").asText().equals(kid)) {
-                    // n과 e를 Base64 URL 디코딩 후 BigInteger로 변환
-                    BigInteger modulus = new BigInteger(1, Base64.getUrlDecoder().decode(key.get("n").asText()));
-                    BigInteger exponent = new BigInteger(1, Base64.getUrlDecoder().decode(key.get("e").asText()));
-
-                    // RSAPublicKeySpec을 사용해 공개 키 생성
-                    KeyFactory keyFactory = KeyFactory.getInstance("RSA");
-                    return keyFactory.generatePublic(new RSAPublicKeySpec(modulus, exponent));
+                for (JsonNode key : jwks) {
+                    if (key.get("kid").asText().equals(kid)) {
+                        BigInteger modulus = new BigInteger(1, Base64.getUrlDecoder().decode(key.get("n").asText()));
+                        BigInteger exponent = new BigInteger(1, Base64.getUrlDecoder().decode(key.get("e").asText()));
+                        KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+                        return keyFactory.generatePublic(new RSAPublicKeySpec(modulus, exponent));
+                    }
                 }
+            } finally {
+                conn.disconnect(); // 연결 해제
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -230,42 +234,57 @@ public class LoginUtil {
     }
 
 
-    public String decrypt(String encryptedText) {
-        String result = "";
+
+    private final ThreadLocal<Cipher> DECRYPT_CIPHER = ThreadLocal.withInitial(() -> {
         try {
-            // SecretKeySpec 생성 (암호화에 사용한 키를 동일하게 사용)
-            SecretKeySpec keySpec = new SecretKeySpec(default_secret.getBytes(), "AES");
-
-            // Cipher 객체 생성 및 초기화
             Cipher cipher = Cipher.getInstance("AES");
+            SecretKeySpec keySpec = new SecretKeySpec(default_secret.getBytes(), "AES");
             cipher.init(Cipher.DECRYPT_MODE, keySpec);
+            return cipher;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    });
 
-            // Base64 디코딩 후 복호화
-            byte[] decodedBytes = Base64.getDecoder().decode(encryptedText);
-            byte[] decryptedBytes = cipher.doFinal(decodedBytes);
+    private final ThreadLocal<Cipher> ENCRYPT_CIPHER = ThreadLocal.withInitial(() -> {
+        try {
+            Cipher cipher = Cipher.getInstance("AES");
+            SecretKeySpec keySpec = new SecretKeySpec(default_secret.getBytes(), "AES");
+            cipher.init(Cipher.ENCRYPT_MODE, keySpec);
+            return cipher;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    });
 
-            // 결과 문자열 변환
-            result = new String(decryptedBytes);
+    // decrypt 메서드
+    public String decrypt(String encryptedText) {
+        try {
+            // Base64 디코딩 및 Cipher 변환을 스트림으로 처리
+            return new String(
+                    DECRYPT_CIPHER.get().doFinal(
+                            Base64.getDecoder().decode(encryptedText)
+                    )
+            );
         } catch (Exception e) {
             e.printStackTrace();
+            return "";
         }
-
-        return result;
     }
-    public String encrypt(String plainText){
-        String result = "";
-        try{
-            SecretKeySpec keySpec = new SecretKeySpec(default_secret.getBytes(), "AES");
-            Cipher cipher = Cipher.getInstance("AES");
-            cipher.init(Cipher.ENCRYPT_MODE, keySpec);
-            byte[] encryptedBytes = cipher.doFinal(plainText.getBytes());
 
-            result = Base64.getEncoder().encodeToString(encryptedBytes);
-        }catch(Exception e){
+    // encrypt 메서드
+    public String encrypt(String plainText) {
+        try {
+            // Cipher 변환 및 Base64 인코딩을 스트림으로 처리
+            return Base64.getEncoder().encodeToString(
+                    ENCRYPT_CIPHER.get().doFinal(plainText.getBytes())
+            );
+        } catch (Exception e) {
             e.printStackTrace();
+            return "";
         }
-
-        return result;
     }
+
+
 
 }
