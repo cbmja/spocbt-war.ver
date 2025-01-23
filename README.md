@@ -58,9 +58,9 @@ aspose 에서 제공하는 솔루션이 그중 제일 일관성 있게 변환이
 다음으로는 선택지(보기) 를 클릭할 수 있도록 css 를 추가했습니다.
 
 
-
-![화면 캡처 2025-01-23 175246](https://github.com/user-attachments/assets/1ac25512-a49d-45e0-9bba-cbd431bf88ff)
 ![화면 캡처 2025-01-23 175213](https://github.com/user-attachments/assets/2ee6e0cd-49fb-4951-9622-7f075585e36c)
+![화면 캡처 2025-01-23 175246](https://github.com/user-attachments/assets/1ac25512-a49d-45e0-9bba-cbd431bf88ff)
+
 
 
 
