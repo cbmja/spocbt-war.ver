@@ -5,6 +5,31 @@
 
 <br/>
 
+### 메인 화면인 시험 목록 화면입니다.
+### url : <http://spocbt.cafe24.com/exam/list>
+<br/>
+
+- 최신순/오래된순/응시가능만보기 ajax 와 append 를 사용하여 화면이 전환되지 않고 목록이 갱신될 수 있도록 하였습니다.
+
+https://github.com/user-attachments/assets/3b33bf83-826e-4577-b9ec-2554831324e6
+
+<br/>
+
+---
+
+<br/>
+
+## 시험 선택 후 응시 과목 선택 화면
+
+- 시험마다 선택/필수과목이 다른 부분을 해결하는 것이 해당 부분의 메인 과제였습니다.
+- ex) 2급 장애인스포츠지도사 / 2급 생활스포츠지도사
+
+<br/>
+
+https://github.com/user-attachments/assets/28866aba-e48d-4db2-b7e1-6169a4a4713a
+
+<br/>
+
 ---
 
 <br/>
@@ -117,32 +142,7 @@ https://github.com/user-attachments/assets/06ec8bd9-624e-4cfd-a9ef-3441704e2a8a
 
 <br/>
 
-### 메인 화면인 시험 목록 화면입니다.
-### url : <http://spocbt.cafe24.com/exam/list>
-<br/>
 
-- 최신순/오래된순/응시가능만보기 ajax 와 append 를 사용하여 화면이 전환되지 않고 목록이 갱신될 수 있도록 하였습니다.
-
-https://github.com/user-attachments/assets/3b33bf83-826e-4577-b9ec-2554831324e6
-
-<br/>
-
----
-
-<br/>
-
-## 시험 선택 후 응시 과목 선택 화면
-
-- 시험마다 선택/필수과목이 다른 부분을 해결하는 것이 해당 부분의 메인 과제였습니다.
-- ex) 2급 장애인스포츠지도사 / 2급 생활스포츠지도사
-
-<br/>
-
-https://github.com/user-attachments/assets/28866aba-e48d-4db2-b7e1-6169a4a4713a
-
-<br/>
-
----
 
 
 
