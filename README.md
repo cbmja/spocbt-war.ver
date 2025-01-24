@@ -46,7 +46,7 @@
 <br/>
 
 ## 개발 과정
-- ui 디자인 : 인프런 사이트를 참고하여 화면을 디자인하고 html로 구현하였습니다. <[https://www.inflearn.com](https://www.inflearn.com/?srsltid=AfmBOorMFijUYHKeVwGF0wyZFAO7iMaX40MhH7CgSXI-5sIvrO1sJerw)/>
+- ui 디자인 : 인프런 사이트를 참고하여 화면을 디자인하고 html로 구현하였습니다. <[[https://www.inflearn.com](https://www.inflearn.com/?srsltid=AfmBOorMFijUYHKeVwGF0wyZFAO7iMaX40MhH7CgSXI-5sIvrO1sJerw)](https://www.inflearn.com/?srsltid=AfmBOorMFijUYHKeVwGF0wyZFAO7iMaX40MhH7CgSXI-5sIvrO1sJerw)/>
 
 <br/>
 
