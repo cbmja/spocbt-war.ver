@@ -25,7 +25,6 @@
 ---
 ## 폴더 구조
 <br/>
-
 ````
 ├─java
 │  └─com
@@ -190,7 +189,6 @@
                     menu.html
                     myBoard.html
 ````
-
 <br/>
 ---
 <br/>
