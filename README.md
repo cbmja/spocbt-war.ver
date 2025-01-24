@@ -70,30 +70,31 @@ python 은 아예 다를 줄 모르지만 chat gpt 를 활용하여 기본적인
 
 ---
 
-## 시연
+## 시험 목록
 
-### 시험 목록
-![main](https://github.com/user-attachments/assets/1f3f2df1-2af8-4c8b-a0c9-61b4c8a60db4)
+### 메인 화면인 시험 목록 화면입니다.
+
+https://github.com/user-attachments/assets/3b33bf83-826e-4577-b9ec-2554831324e6
+
+---
+
+## 시험 선택 후 응시 과목 선택 화면
+
+### 시험 목록에서 응시할 시험을 선택하면 응시할 과목을 선택합니다.
+
+https://github.com/user-attachments/assets/28866aba-e48d-4db2-b7e1-6169a4a4713a
+
+---
+
+## 시험 응시 화면
+
+### 응시 과목윽 선택하면 응시할 시험지가 나타납니다.
+
+https://github.com/user-attachments/assets/7353434e-c158-4b60-b845-532141856f0c
+
+---
 
 
-### 시험 선택 후 응시 과목 선택 화면
-![exam_select](https://github.com/user-attachments/assets/75d5a1f4-4d92-4231-8cd8-debe7fe8645c)
-
-
-### 시험 응시 화면
-![test](https://github.com/user-attachments/assets/417eb289-9676-4017-9df5-254068789139)
-
-
-### 시험 제출 후 채점 화면
-![submit](https://github.com/user-attachments/assets/73077a56-aed1-4ead-afb3-5c22c265f158)
-
-
-### 마이페이지 시험 이력 조회
-![mypage](https://github.com/user-attachments/assets/90929a45-2368-4926-b16d-9e9e6ba3f292)
-
-
-### 마이페이지 시험 이력 상세
-![detail](https://github.com/user-attachments/assets/36e433ee-9311-47cd-bde1-3bfefca7be92)
 
 
 
