@@ -25,6 +25,7 @@
 ---
 ## 폴더 구조
 <br/>
+```
 ├─java
 │  └─com
 │      └─spocbt
@@ -187,6 +188,7 @@
                     history.html
                     menu.html
                     myBoard.html
+```
 <br/>
 ---
 <br/>
