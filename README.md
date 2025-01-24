@@ -71,12 +71,17 @@
 -         카페24 를 통해 비교적 쉽게 배포를 하였습니다.
 -         aws , cloud 환경 에 대한 관심이 커졌고 공부를 시작해보려 합니다.
 
-  
+<br/>
+
+---
+
 <br/>
 
 ### 메인 화면인 시험 목록 화면입니다.
 ### url : <http://spocbt.cafe24.com/exam/list>
 <br/>
+
+- 최신순/오래된순/응시가능만보기 ajax 와 append 를 사용하여 화면이 전환되지 않고 목록이 갱신될 수 있도록 하였습니다.
 
 https://github.com/user-attachments/assets/3b33bf83-826e-4577-b9ec-2554831324e6
 
@@ -87,6 +92,9 @@ https://github.com/user-attachments/assets/3b33bf83-826e-4577-b9ec-2554831324e6
 <br/>
 
 ## 시험 선택 후 응시 과목 선택 화면
+
+- 시험마다 선택/필수과목이 다른 부분을 해결하는 것이 해당 페이지의 고비였습니다.
+- ex) 2급 장애인스포츠지도사 / 2급 생활스포츠지도사
 
 <br/>
 
