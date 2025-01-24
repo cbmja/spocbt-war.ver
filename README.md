@@ -22,7 +22,7 @@
 <br/>
 
 ## 개발환경
-- front : html5 , css3 , javascript , jquery , thymeleaf , jquery
+- front : html5 , css3 , javascript , jquery , thymeleaf
 - back : java , spring boot , mysql , mybatis
 - util : github , fileZilla
   
