@@ -2,6 +2,51 @@
 
 <br/>
 
+---
+
+<br/>
+
+## 아래에 자세한 설명이 있습니다!!
+
+<br/>
+
+---
+
+<br/>
+
+## 시험 응시 화면
+
+<br/>
+
+### 응시 과목을 선택하면 응시할 시험지가 나타납니다.
+
+<br/>
+
+https://github.com/user-attachments/assets/7353434e-c158-4b60-b845-532141856f0c
+
+<br/>
+
+---
+
+<br/>
+
+## 시험 결과 화면
+
+<br/>
+
+### 시험의 채점 결과를 보여줍니다
+- 영상에는 총점은 넘겼지만 스포츠심리학 과목이 과락 점수인 40점을 넘지 못하여 결과는 none pass 입니다.
+
+<br/>
+
+https://github.com/user-attachments/assets/06ec8bd9-624e-4cfd-a9ef-3441704e2a8a
+
+
+
+
+
+<br/>
+
 ### 배포: <http://spocbt.cafe24.com/exam/list>
 
 <br/>
@@ -104,34 +149,10 @@ https://github.com/user-attachments/assets/28866aba-e48d-4db2-b7e1-6169a4a4713a
 
 ---
 
-<br/>
 
-## 시험 응시 화면
 
-<br/>
 
-### 응시 과목을 선택하면 응시할 시험지가 나타납니다.
 
-<br/>
-
-https://github.com/user-attachments/assets/7353434e-c158-4b60-b845-532141856f0c
-
-<br/>
-
----
-
-<br/>
-
-## 시험 결과 화면
-
-<br/>
-
-### 시험의 채점 결과를 보여줍니다
-- 영상에는 총점은 넘겼지만 스포츠심리학 과목이 과락 점수인 40점을 넘지 못하여 결과는 none pass 입니다.
-
-<br/>
-
-https://github.com/user-attachments/assets/06ec8bd9-624e-4cfd-a9ef-3441704e2a8a
 
 
 
