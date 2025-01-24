@@ -122,6 +122,16 @@ https://github.com/user-attachments/assets/7353434e-c158-4b60-b845-532141856f0c
 
 <br/>
 
+## 시험 결과 화면
+
+<br/>
+
+### 시험의 채점 결과를 보여줍니다
+- 영상에는 총점은 넘겼지만 스포츠심리학 과목이 과락 점수인 40점을 넘지 못하여 결과는 none pass 입니다.
+
+<br/>
+
+https://github.com/user-attachments/assets/06ec8bd9-624e-4cfd-a9ef-3441704e2a8a
 
 
 
