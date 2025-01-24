@@ -27,7 +27,6 @@
 <br/>
 
 ````
-```
 ├─java
 │  └─com
 │      └─spocbt
@@ -190,7 +189,6 @@
                     history.html
                     menu.html
                     myBoard.html
-```
 ````
 
 <br/>
