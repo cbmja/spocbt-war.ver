@@ -10,6 +10,7 @@
 ### 5. erd
 ### 6. 디렉터리 구조
 ### 7. 기능 시연 및 코드 설명
+### 8. 느낀점점
 
 <br/>
 
@@ -254,6 +255,85 @@
 
 
 ````
+
+<br/>
+
+---
+
+<br/>
+
+## 메인 화면 / 응시 가능 시험 목록
+
+https://github.com/user-attachments/assets/e8595d30-eaef-4050-92ba-bb5deb305805
+
+<br/>
+
+---
+
+<br/>
+
+## 시험 선택시 -> 응시과목 선택 모달
+
+https://github.com/user-attachments/assets/6dd4ad49-a756-40fe-b035-0231dd8778e8
+
+### 실제 과목 태그입니다.
+
+````
+
+<div class="table-td table-ex-sub elective-background" id="SP"><span class="sub">스포츠심리학</span><span class="sub-type-badge elective-badge">선택</span></div>
+
+````
+
+### 선택과목을 클릭했을 경우 입니다.
+
+````
+
+$(document).on('click', '.elective-background', function(){
+
+    let subjectCode = $(this).attr('id');
+
+    let subjectTd = $('#'+subjectCode);
+    let eleCnt = $('#eleCnt').val();
+
+    let selectedCount = $('.elective-background').filter(function() {
+                                 return $(this).attr('data-isselected') === '1';
+                             }).length;
+
+    let isselected = subjectTd.attr('data-isselected');
+
+
+    if(!isselected || isselected != '1' ){
+
+        if(selectedCount >= eleCnt){
+            alert(eleCnt+'과목을 모두 선택하였습니다. 과목 변경을 원하시면 선택한 과목을 취소 후 다른 과목을 선택해 주세요. (다시 클릭하면 취소.)');
+            return;
+        }
+
+        let rl = subjectTd.find('.elective-badge').removeClass('elective-badge').addClass('selected-badge');
+        rl.attr('style' , 'color : #F89321 !important;');
+
+        subjectTd.addClass('selected-subject');
+        subjectTd.find('.sub').attr('style' , 'color : #FFFFFF !important;');
+        subjectTd.attr('data-isselected','1');
+
+
+
+    }else{
+        subjectTd.find('.sub-type-badge').removeAttr('style');
+        subjectTd.find('.sub').removeAttr('style');
+
+        subjectTd.find('.selected-badge').removeClass('selected-badge').addClass('elective-badge');
+        subjectTd.removeClass('selected-subject');
+        subjectTd.attr('data-isselected','0');
+
+    }
+return;
+
+
+});
+
+````
+
 
 
 
