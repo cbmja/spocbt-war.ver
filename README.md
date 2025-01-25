@@ -31,7 +31,7 @@
 
 ## 2. 프로젝트 기간 
 
- ### 24/12/18 ~ 25/01/15 (약 1달)
+### 24/12/18 ~ 25/01/15 (약 1달)
 
 <br/>
 
@@ -41,9 +41,9 @@
 
 ## 3. 개발 환경
 
- ### 개발환경 : window11 , intelliJ , gradle
- ### back-end : java17 , spring boot3.3 , mysql , mybatis
- ### front-end : html5 , css3 , jQuery , Thymeleaf
+### 개발환경 : window11 , intelliJ , gradle
+### back-end : java17 , spring boot3.3 , mysql , mybatis
+### front-end : html5 , css3 , jQuery , Thymeleaf
 
 <br/>
 
@@ -53,7 +53,7 @@
 
 ## 4. 개발 인원 
 
- ### 1명
+### 1명
 
 <br/>
 
