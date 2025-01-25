@@ -276,7 +276,9 @@ https://github.com/user-attachments/assets/e8595d30-eaef-4050-92ba-bb5deb305805
 
 https://github.com/user-attachments/assets/6dd4ad49-a756-40fe-b035-0231dd8778e8
 
-### 실제 과목 태그입니다.
+### 과목 태그 코드
+
+![화면 캡처 2025-01-25 131600](https://github.com/user-attachments/assets/06681b31-0202-41cd-b489-a52f6447b870)
 
 ```javascript
 
@@ -290,7 +292,7 @@ https://github.com/user-attachments/assets/6dd4ad49-a756-40fe-b035-0231dd8778e8
 
 $(document).on('click', '.elective-background', function(){
 
-    **선택한 과목의 과목 코드**
+    // 선택한 과목의 과목 코드
     let subjectCode = $(this).attr('id');
 
     // 현재 클릭한 영역
@@ -325,7 +327,9 @@ $(document).on('click', '.elective-background', function(){
 
 
 
-    }else{ // 현재 선택한 과목이 선택되어 있었던 경우 -> 선택 해제 처리
+    }else{
+    // 현재 선택한 과목이 선택되어 있었던 경우 -> 선택 해제 처리
+
         subjectTd.find('.sub-type-badge').removeAttr('style');
         subjectTd.find('.sub').removeAttr('style');
 
