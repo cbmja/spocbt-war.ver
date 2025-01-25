@@ -290,18 +290,25 @@ https://github.com/user-attachments/assets/6dd4ad49-a756-40fe-b035-0231dd8778e8
 
 $(document).on('click', '.elective-background', function(){
 
+    // 선택한 과목의 과목 코드
     let subjectCode = $(this).attr('id');
 
+    // 현재 클릭한 영역
     let subjectTd = $('#'+subjectCode);
+
+    // 현재 선택한 시험의 선택해야하는 과목 수
     let eleCnt = $('#eleCnt').val();
 
+    // 현재 선택되어있는 과목 수
     let selectedCount = $('.elective-background').filter(function() {
                                  return $(this).attr('data-isselected') === '1';
                              }).length;
 
+    // data 부여
     let isselected = subjectTd.attr('data-isselected');
 
-
+    // 현재 선택한 과목이 선택되어있지 않았을 경우 -> 선택과목을 모두 선택했을 경우 alert
+    // 아닌 경우 선택처리
     if(!isselected || isselected != '1' ){
 
         if(selectedCount >= eleCnt){
@@ -318,7 +325,7 @@ $(document).on('click', '.elective-background', function(){
 
 
 
-    }else{
+    }else{ // 현재 선택한 과목이 선택되어 있었던 경우 -> 선택 해제 처리
         subjectTd.find('.sub-type-badge').removeAttr('style');
         subjectTd.find('.sub').removeAttr('style');
 
@@ -327,7 +334,7 @@ $(document).on('click', '.elective-background', function(){
         subjectTd.attr('data-isselected','0');
 
     }
-return;
+    return;
 
 
 });
