@@ -278,7 +278,7 @@ https://github.com/user-attachments/assets/6dd4ad49-a756-40fe-b035-0231dd8778e8
 
 ### 실제 과목 태그입니다.
 
-```ruby
+```javascript
 
 <div class="table-td table-ex-sub elective-background" id="SP"><span class="sub">스포츠심리학</span><span class="sub-type-badge elective-badge">선택</span></div>
 
@@ -286,7 +286,7 @@ https://github.com/user-attachments/assets/6dd4ad49-a756-40fe-b035-0231dd8778e8
 
 ### 선택과목을 클릭했을 경우 입니다.
 
-```ruby
+```javascript
 
 $(document).on('click', '.elective-background', function(){
 
