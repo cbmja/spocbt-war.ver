@@ -74,6 +74,7 @@
 
 ## 5. 디렉터리 구조
 
+### back
 ````
 
 ├─java
@@ -130,6 +131,127 @@
 │                      JvmCheck.java
 │                      LoginDto.java
 │                      LoginUtil.java
+
+````
+
+<br/>
+
+---
+
+<br/>
+
+### front
+````
+
+│
+└─resources
+    │  application.yml
+    │
+    ├─mapper
+    │      answer_master.xml
+    │      board_detail.xml
+    │      comment.xml
+    │      exam.xml
+    │      exam_subject.xml
+    │      member.xml
+    │      subject.xml
+    │      test_record.xml
+    │      test_subject_record.xml
+    │      update_exam.xml
+    │
+    ├─static
+    │  ├─css
+    │  │  │  common.css
+    │  │  │
+    │  │  ├─exam
+    │  │  │      exam.css
+    │  │  │
+    │  │  ├─layout
+    │  │  │      footer.css
+    │  │  │      header.css
+    │  │  │      navbar.css
+    │  │  │
+    │  │  └─view
+    │  │          boardDetail.css
+    │  │          boardForm.css
+    │  │          boardList.css
+    │  │          examList.css
+    │  │          history.css
+    │  │          join.css
+    │  │          login.css
+    │  │          myBoard.css
+    │  │          mypageMenu.css
+    │  │
+    │  ├─icon
+    │  │      profile.svg
+    │  │      search.svg
+    │  │
+    │  └─js
+    │      │  jquery-3.7.1.min.js
+    │      │
+    │      ├─exam
+    │      │      exam.js
+    │      │
+    │      ├─layout
+    │      │      footer.js
+    │      │      header.js
+    │      │      navbar.js
+    │      │
+    │      └─view
+    │              boardDetail.js
+    │              boardForm.js
+    │              boardLIst.js
+    │              examList.js
+    │              history.js
+    │              join.js
+    │              login.js
+    │              myBoard.js
+    │              mypageMenu.js
+    │
+    └─templates
+        │  sub.txt
+        │
+        ├─layout
+        │      footer.html
+        │      header.html
+        │      layout.html
+        │      navbar.html
+        │
+        ├─util
+        │      prepare.html
+        │
+        └─view
+            │  boardDetail.html
+            │  boardForm.html
+            │  boardList.html
+            │  examList.html
+            │  exam_subject_modal.html
+            │  index.html
+            │  join.html
+            │  login.html
+            │
+            ├─exam
+            │      2016.LSI_2.A형.html
+            │      2016.LSI_2.B형.html
+            │      2018.LSI_2.A형.html
+            │      2018.LSI_2.B형.html
+            │      2019.LSI_2.A형.html
+            │      2019.LSI_2.B형.html
+            │      2020.LSI_2.A형.html
+            │      2020.LSI_2.B형.html
+            │      2021.LSI_2-PSI_2-ASI_2-YSI-SSI.A형.html
+            │      2021.LSI_2-PSI_2-ASI_2-YSI-SSI.B형.html
+            │      2022.LSI_2-PSI_2-ASI_2-YSI-SSI.A형.html
+            │      2022.LSI_2-PSI_2-ASI_2-YSI-SSI.B형.html
+            │      2023.LSI_2-PSI_2-ASI_2-YSI-SSI.A형.html
+            │      2023.LSI_2-PSI_2-ASI_2-YSI-SSI.B형.html
+            │      exambar.html
+            │
+            └─mypage
+                    history.html
+                    menu.html
+                    myBoard.html
+
 
 ````
 
