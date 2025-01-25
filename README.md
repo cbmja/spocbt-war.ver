@@ -63,7 +63,8 @@
 
 ## 5. ERD
 
-[erd.pdf](https://github.com/user-attachments/files/18544730/erd.pdf)
+![화면 캡처 2025-01-25 124236](https://github.com/user-attachments/assets/c90e7a17-ef69-463c-aae3-a300ad59840b)
+
 
 <br/>
 
