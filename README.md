@@ -521,7 +521,7 @@ $(document).on('click', '#ex-sub-btn', function () {
 
             let restr = '';
 
-            if(mytscore >= (scoreList.length * 100)*0.6 && subres == 'P'){ // 합격
+            if(mytscore >= (scoreList.length * 100)*0.6 && subres == 'P'){
                 restr = '<span style="color: #0078C4 !important">총점: '+mytscore+' / '+tsc+'</span> <span class="success-sub" style="font-size: 13px; background-color: #FFFFFF !important;"> 결과 : pass </span>';
             } else if(mytscore < (scoreList.length * 100)*0.6 || subres == 'F'){
                 restr = '<span style="color: #0078C4 !important">총점: '+mytscore+' / '+tsc+'</span> <span class="failure-sub" style="font-size: 13px; background-color: #FFFFFF !important;"> 결과 : none pass </span>';
@@ -534,7 +534,6 @@ $(document).on('click', '#ex-sub-btn', function () {
 
             $('.score-modal-overlay').attr('style','display: flex;');
 
-            //window.location.href = response;
 
         },
         error: function(xhr, status, error) {
@@ -546,6 +545,76 @@ $(document).on('click', '#ex-sub-btn', function () {
 });
 
 ```
+
+### back-end code
+
+- ajax 요청을 수신하여 처리합니다.
+- 1차적으로 문자열 형태의 응시 데이터를 list로 변환해줍니다.
+
+```java
+
+    @PostMapping("/submit")
+    @ResponseBody
+    public Map<String , List<Score>> testSubmit (@RequestBody Map<String,Object> form, ServletRequest request,Model model){
+        Map<String , List<Score>> score = new HashMap<>();
+            try{
+            String examCode = (String)form.get("examCode") == null ? "" : (String)form.get("examCode");
+            String year = (String)form.get("year") == null ? "" : (String)form.get("year");
+            String type = (String)form.get("type") == null ? "" : (String)form.get("type");
+            String electiveSubjects = (String)form.get("electiveSubjects") == null ? "" : (String)form.get("electiveSubjects");
+            String requiredSubjects = (String)form.get("requiredSubjects") == null ? "" : (String)form.get("requiredSubjects");
+            String memberCode = (String)form.get("memberCode") == null ? "" : (String)form.get("memberCode");
+            List<String> myAnswer = (List<String>)form.get("form") == null ? new ArrayList<>() : (List<String>)form.get("form");
+
+
+            // 과목코드/과목코드/.. 응시 과목 문자열을 list 로 변환
+            List<String> eleList = Arrays.stream(electiveSubjects.split("/"))
+                    .filter(s -> !s.isEmpty())
+                    .collect(Collectors.toList());
+            List<String> reqList = Arrays.stream(requiredSubjects.split("/"))
+                    .filter(s -> !s.isEmpty())
+                    .collect(Collectors.toList());
+
+            // 섞여있는 응시 정보를 과목순 , 문제번호순 으로 정렬
+            Collections.sort(myAnswer, Comparator
+                    .comparing((String s) -> s.split("_")[0]) // 첫 번째 `_` 앞의 문자로 정렬
+                    .thenComparing(s -> Integer.parseInt(s.split("_")[1])) // 두 번째 `_` 뒤의 숫자로 정렬
+            );
+
+            Map<String , List<String>> myAnswerList = new HashMap<>();
+
+            for(String sub : eleList){
+                myAnswerList.put(sub , new ArrayList<>());
+            }
+            for(String sub : reqList){
+                myAnswerList.put(sub , new ArrayList<>());
+            }
+
+            // 선택과목 아닌 것중 보기에서 선택한 것 제거
+            // 프론트에서 1차적으로 처리가 되었지만 서버에서 한 번 더 확인해줍니다.
+            for(String myanswer : myAnswer){
+               String a = myanswer.split("_")[0];
+               if(myAnswerList.get(a) != null){
+                   myAnswerList.get(a).add(myanswer);
+               }
+            }
+
+            
+            return testService.getScore(examCode,type,year,eleList,reqList,myAnswerList , memberCode);
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("endpoint---------------------------/exam/submit",e);
+            List<Score> errs = new ArrayList<>();
+            Score s = new Score();
+            s.setErr("err");
+            score.put("err" , errs);
+            return score;
+        }
+
+    }
+
+```
+
 
 
 
