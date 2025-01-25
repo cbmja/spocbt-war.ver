@@ -286,7 +286,7 @@ https://github.com/user-attachments/assets/6dd4ad49-a756-40fe-b035-0231dd8778e8
 
 ### 선택과목을 클릭했을 경우 입니다.
 
-````
+```ruby
 
 $(document).on('click', '.elective-background', function(){
 
@@ -339,7 +339,7 @@ $(document).on('click', '.elective-background', function(){
 
 });
 
-````
+```
 
 
 
