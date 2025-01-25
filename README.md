@@ -63,6 +63,15 @@
 
 ## 5. ERD
 
+[erd.pdf](https://github.com/user-attachments/files/18544730/erd.pdf)
+
+<br/>
+
+---
+
+<br/>
+
+## 5. 디렉터리 구조
 
 
 
