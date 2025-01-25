@@ -290,7 +290,7 @@ https://github.com/user-attachments/assets/6dd4ad49-a756-40fe-b035-0231dd8778e8
 
 $(document).on('click', '.elective-background', function(){
 
-    ** 선택한 과목의 과목 코드 **
+    **선택한 과목의 과목 코드**
     let subjectCode = $(this).attr('id');
 
     // 현재 클릭한 영역
